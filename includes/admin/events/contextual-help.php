@@ -34,7 +34,7 @@ function mem_events_contextual_help() {
 		'<p><strong>' . __( 'For more information:', 'mobile-events-manager' ) . '</strong></p>' .
 		'<p>' . sprintf(
 			__( 'Visit the <a href="%s">documentation</a> on the Mobile Events Manager (MEM) website.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/support/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/support/' )
 		) . '</p>' .
 		'<p>' . sprintf(
 			__( 'Join our <a href="%s">Facebook Group</a>.', 'mobile-events-manager' ),
@@ -47,7 +47,7 @@ function mem_events_contextual_help() {
 		) . '</p>' .
 		'<p>' . sprintf(
 			__( 'View <a href="%s">add-ons</a>.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/add-ons/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/add-ons/' )
 		) . '</p>'
 	);
 
@@ -60,7 +60,7 @@ function mem_events_contextual_help() {
 				__( '<strong>%1$s Status</strong> - Set the status of this %2$s. An description of each status can be found <a href="%3$s" target="_blank">here</a>', 'mobile-events-manager' ),
 				$singular,
 				strtolower( $singular ),
-				'http://mobile-events-manager.co.uk/docs/event-statuses/'
+				'http://mobileeventsmanager.co.uk/docs/event-statuses/'
 			) . '</p>' .
 			 '<p>' . __( '<strong>Email Quote Template</strong> - During transition to <strong>Enquiry</strong> status, select which quote email template should be sent to the client.', 'mobile-events-manager' ) . '</p>' .
 			 '<p>' . __( '<strong>Online Quote Template</strong> - During transition to <strong>Enquiry</strong> status, select which quote template should be used to generate the page that displays the online quote.', 'mobile-events-manager' ) . '</p>' .

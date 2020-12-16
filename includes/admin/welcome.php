@@ -323,7 +323,7 @@ class MEM_Welcome {
 				printf(
 					esc_html__( 'Endpoints are available to retrieve data for %1$s, clients, employees, packages and add-ons, and availability. For more information visit the <a href="%2$s" target="_blank">Support Documentation</a>', 'mobile-events-manager' ),
 					esc_html( mem_get_label_plural() ),
-					'http://mobile-events-manager.co.uk/docs/api/mem-rest-api-introduction/'
+					'http://mobileeventsmanager.co.uk/docs/api/mem-rest-api-introduction/'
 				);
 				?>
 		</p>
@@ -513,7 +513,7 @@ class MEM_Welcome {
 				printf(
 					esc_html__( 'Email templates can be configured to be sent automatically during an %1$s status change. Supporting our vast collection of <a href="%2$s" target="_blank">content tags</a> each email can be completley customised and tailored to the %1$s and client details.', 'mobile-events-manager' ),
 					esc_html( mem_get_label_singular( true ) ),
-					'http://mobile-events-manager.co.uk/docs/content-tags/'
+					'http://mobileeventsmanager.co.uk/docs/content-tags/'
 				);
 				?>
 		</p>
@@ -734,7 +734,7 @@ class MEM_Welcome {
 				printf(
 					/* translators: %s: site name */
 					esc_html__( '<a href="%s" target="_blank">The Add-ons store</a> has a list of all available extensions, including convenient category filters so you can find exactly what you are looking for.', 'mobile-events-manager' ),
-					'http://mobile-events-manager.co.uk/add-ons'
+					'http://mobileeventsmanager.co.uk/add-ons'
 				);
 			?>
 		</p>

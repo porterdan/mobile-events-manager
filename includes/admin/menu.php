@@ -626,7 +626,7 @@ function mem_admin_toolbar( $admin_bar ) {
 			'id'     => 'mem-user-guides',
 			'parent' => 'mem',
 			'title'  => sprintf( esc_html__( '%1$sDocumentation%2$s', 'mobile-events-manager' ), '<span style="color:#F90">', '</span>' ),
-			'href'   => 'http://mobile-events-manager.co.uk/support/',
+			'href'   => 'http://mobileeventsmanager.co.uk/support/',
 			'meta'   => array(
 				'title'  => __( 'Documentation', 'mobile-events-manager' ),
 				'target' => '_blank',

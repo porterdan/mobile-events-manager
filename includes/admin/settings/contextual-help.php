@@ -31,7 +31,7 @@ function mem_settings_contextual_help() {
 		'<p><strong>' . __( 'For more information:', 'mobile-events-manager' ) . '</strong></p>' .
 		'<p>' . sprintf(
 			__( 'Visit the <a href="%s">documentation</a> on the Mobile Events Manager (MEM) website.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/support/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/support/' )
 		) . '</p>' .
 		'<p>' . sprintf(
 			__( 'Join our <a href="%s">Facebook Group</a>.', 'mobile-events-manager' ),
@@ -44,7 +44,7 @@ function mem_settings_contextual_help() {
 		) . '</p>' .
 		'<p>' . sprintf(
 			__( 'View <a href="%s">add-ons</a>.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/add-ons/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/add-ons/' )
 		) . '</p>'
 	);
 
@@ -112,7 +112,7 @@ function mem_settings_contextual_help() {
 			'content' =>
 			'<p>' . sprintf(
 				__( 'If you have any <a href="%s">Mobile Events Manager (MEM) paid add-ons</a> installed, this screen is where you should add the license to enable automatic updates whilst your license is valid.', 'mobile-events-manager' ),
-				esc_url( 'http://mobile-events-manager.co.uk/add-ons/' )
+				esc_url( 'http://mobileeventsmanager.co.uk/add-ons/' )
 			) . '</p>',
 		)
 	);

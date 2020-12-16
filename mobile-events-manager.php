@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Version: 1.0
  * Date: 15th December 2020
  * Author: Jack Mawhinney, Dan Porter
- * Author URI: http://mobile-events-manager.co.uk
+ * Author URI: http://mobileeventsmanager.co.uk
  * Text Domain: mobile-events-manager
  * Domain Path: /languages
  * License: GPL2

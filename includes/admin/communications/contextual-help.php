@@ -33,7 +33,7 @@ function mem_comms_email_contextual_help() {
 		'<p>' . sprintf(
 			/* translators: %s: MEM website */
 			__( 'Visit the <a href="%s">documentation</a> on the Mobile Events Manager (MEM) website.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/support/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/support/' )
 		) . '</p>' .
 		'<p>' . sprintf(
 			/* translators: %s: MEM website */
@@ -49,7 +49,7 @@ function mem_comms_email_contextual_help() {
 		'<p>' . sprintf(
 			/* translators: %s: MEM website */
 			__( 'View <a href="%s">add-ons</a>.', 'mobile-events-manager' ),
-			esc_url( 'http://mobile-events-manager.co.uk/add-ons/' )
+			esc_url( 'http://mobileeventsmanager.co.uk/add-ons/' )
 		) . '</p>'
 	);
 
