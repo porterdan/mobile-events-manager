@@ -1,0 +1,16 @@
+{
+ "name": "mem/mobile-events-manager",
+ "type": "wordpress-plugin",
+ "description": "The most efficient and versatile event management solution for WordPress.",
+ "keywords": ["mem", "mobile events manager", "Mobile Events Manager (MEM)"],
+ "homepage": "https://mem.co.uk/",
+ "license": "GPL-2.0+",
+ "support": {
+ 	 "issues": "https://mobileeventsmanager.co.uk/support"
+ },
+ "require": {
+ "php": ">=5.4.0",
+ "composer/installers": "~1.0"
+ },
+ "minimum-stability": "dev"
+}
