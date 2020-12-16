@@ -62,10 +62,10 @@ function mem_get_admin_page( $mem_page, $action = 'str' ) {
 		'transactions'        => 'edit.php?post_type=mem-transaction',
 		'updated'             => 'admin.php?page=mem-updated',
 		'about'               => 'admin.php?page=mem-about',
-		'mobile_events_manager'         => 'http://mobile-events-manager.co.uk',
-		'user_guides'         => 'http://mobile-events-manager.co.uk/support/user-guides',
-		'mem_support'        => 'http://mobile-events-manager.co.uk/support',
-		'mem_forums'         => 'http://mobile-events-manager.co.uk/forums',
+		'mobile_events_manager'         => 'http://mobileeventsmanager.co.uk',
+		'user_guides'         => 'http://mobileeventsmanager.co.uk/support/user-guides',
+		'mem_support'        => 'http://mobileeventsmanager.co.uk/support',
+		'mem_forums'         => 'http://mobileeventsmanager.co.uk/forums',
 	);
 	if ( in_array( $mem_page, $mobile_events_manager ) ) {
 		$mem_page = $mem_pages[ $mem_page ];

@@ -378,7 +378,7 @@ function mem_wpadmin_footer_text( $text ) {
 	$text .= ' ';
 	$text .= '<em>' . sprintf(
 		__( 'Powered by <a class="mem-admin-footer" href="%1$s" target="_blank">Mobile Events Manager (MEM), version %2$s</a>.', 'mobile-events-manager' ),
-		'http://mobile-events-manager.co.uk',
+		'http://mobileeventsmanager.co.uk',
 		MEM_VERSION_NUM
 	) . '</em>';
 

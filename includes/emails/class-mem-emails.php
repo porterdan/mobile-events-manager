@@ -178,7 +178,7 @@ class MEM_Emails {
 			$this->headers  = "From: {$this->from_name} <{$this->from_address}>\r\n";
 			$this->headers .= "Reply-To: {$this->from_address}\r\n";
 			$this->headers .= "Content-Type: {$this->get_content_type()}; charset=utf-8\r\n";
-			$this->headers .= 'X-Mailer: ' . sprintf( esc_html__( 'Mobile Events Manager (MEM) version %s (http://mobile-events-manager.co.uk)', 'mobile-events-manager' ), MEM_VERSION_NUM );
+			$this->headers .= 'X-Mailer: ' . sprintf( esc_html__( 'Mobile Events Manager (MEM) version %s (http://mobileeventsmanager.co.uk)', 'mobile-events-manager' ), MEM_VERSION_NUM );
 		}
 
 		return apply_filters( 'mem_email_headers', $this->headers, $this );

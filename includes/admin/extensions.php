@@ -33,7 +33,7 @@ function mem_extensions_page() {
 				'utm_campaign' => 'MEM_Addons_Page',
 				'utm_content'  => 'All Addons',
 			),
-			'https://mobile-events-manager.co.uk/add-ons/'
+			'https://mobileeventsmanager.co.uk/add-ons/'
 		)
 	);
 
@@ -45,7 +45,7 @@ function mem_extensions_page() {
 				'utm_campaign' => 'MEM_Addons_Page',
 				'utm_content'  => 'newsletter_signup',
 			),
-			'https://mobile-events-manager.co.uk/#newsletter-signup'
+			'https://mobileeventsmanager.co.uk/#newsletter-signup'
 		)
 	);
 
@@ -71,7 +71,7 @@ function mem_extensions_page() {
 			foreach ( $extensions as $key => $extension ) :
 				$the_excerpt = '';
 				$slug        = $extension->info->slug;
-				$link        = 'https://mobile-events-manager.co.uk/downloads/' . $slug . '/';
+				$link        = 'https://mobileeventsmanager.co.uk/downloads/' . $slug . '/';
 				$price       = false;
 				$link        = esc_url(
 					add_query_arg(
@@ -166,7 +166,7 @@ function mem_get_extensions() {
 	$extensions = get_transient( '_mem_extensions_feed' );
 
 	if ( false === $extensions || doing_action( 'mem_daily_scheduled_events' ) ) {
-		$route    = esc_url( 'https://mobile-events-manager.co.uk/edd-api/products/' );
+		$route    = esc_url( 'https://mobileeventsmanager.co.uk/edd-api/products/' );
 		$number   = 20;
 		$endpoint = add_query_arg(
 			array(

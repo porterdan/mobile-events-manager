@@ -571,7 +571,7 @@ function mem_get_registered_settings() {
 						'id'   => 'package_contact_btn',
 						'name' => __( 'Add Contact Button?', 'mobile-events-manager' ),
 						'hint' => sprintf('Select to auto add a contact button to the end of package/addons post content. The link will redirect to the <code>Contact Page</code>page as defined in <a href="%s">Pages</a>', 'mobile-events-manager', admin_url( 'admin.php?page=mem-settings&tab=client_zone&section=pages' ) ),
-						'desc' => sprintf( 'If you use the <a href="%s" target="_blank">Dynamic Contact Forms</a> add-on, the package/addon will be auto selected on page load', 'mobile-events-manager', 'http://mobile-events-manager.co.uk/products/dynamic-contact-forms/' ),
+						'desc' => sprintf( 'If you use the <a href="%s" target="_blank">Dynamic Contact Forms</a> add-on, the package/addon will be auto selected on page load', 'mobile-events-manager', 'http://mobileeventsmanager.co.uk/products/dynamic-contact-forms/' ),
 						'type' => 'checkbox',
 					),
 					'package_contact_btn_text' => array(
@@ -2531,7 +2531,7 @@ if ( ! function_exists( 'mem_license_key_callback' ) ) {
 						$class      = 'error';
 						$messages[] = sprintf(
 							__( 'Invalid license. Please <a href="%s" target="_blank" title="Visit account page">visit your account page</a> and verify it.', 'mobile-events-manager' ),
-							'https://mobile-events-manager.co.uk/your-account'
+							'https://mobileeventsmanager.co.uk/your-account'
 						);
 
 						$license_status = 'license-' . $class . '-notice';
@@ -2544,7 +2544,7 @@ if ( ! function_exists( 'mem_license_key_callback' ) ) {
 						$messages[] = sprintf(
 							__( 'Your %1$s is not active for this URL. Please <a href="%2$s" target="_blank" title="Visit account page">visit your account page</a> to manage your license key URLs.', 'mobile-events-manager' ),
 							$args['name'],
-							'https://mobile-events-manager.co.uk/your-account'
+							'https://mobileeventsmanager.co.uk/your-account'
 						);
 
 						$license_status = 'license-' . $class . '-notice';
@@ -2561,7 +2561,7 @@ if ( ! function_exists( 'mem_license_key_callback' ) ) {
 
 					case 'no_activations_left':
 						$class      = 'error';
-						$messages[] = sprintf( esc_html__( 'Your license key has reached its activation limit. <a href="%s">View possible upgrades</a> now.', 'mobile-events-manager' ), 'https://mobile-events-manager.co.uk/your-account/' );
+						$messages[] = sprintf( esc_html__( 'Your license key has reached its activation limit. <a href="%s">View possible upgrades</a> now.', 'mobile-events-manager' ), 'https://mobileeventsmanager.co.uk/your-account/' );
 
 						$license_status = 'license-' . $class . '-notice';
 
@@ -2577,7 +2577,7 @@ if ( ! function_exists( 'mem_license_key_callback' ) ) {
 					default:
 						$class      = 'error';
 						$error      = ! empty( $license->error ) ? $license->error : __( 'unknown_error', 'mobile-events-manager' );
-						$messages[] = sprintf( esc_html__( 'There was an error with this license key: %1$s. Please <a href="%2$s">contact our support team</a>.', 'mobile-events-manager' ), $error, 'https://mobile-events-manager.co.uk/support' );
+						$messages[] = sprintf( esc_html__( 'There was an error with this license key: %1$s. Please <a href="%2$s">contact our support team</a>.', 'mobile-events-manager' ), $error, 'https://mobileeventsmanager.co.uk/support' );
 
 						$license_status = 'license-' . $class . '-notice';
 						break;
@@ -2605,7 +2605,7 @@ if ( ! function_exists( 'mem_license_key_callback' ) ) {
 							$messages[] = sprintf(
 								__( 'Your license key expires soon! It expires on %1$s. <a href="%2$s" target="_blank" title="Renew license">Renew your license key</a>.', 'mobile-events-manager' ),
 								date_i18n( get_option( 'date_format' ), strtotime( $license->expires, current_time( 'timestamp' ) ) ),
-								'https://mobile-events-manager.co.uk/checkout/?edd_license_key=' . $value
+								'https://mobileeventsmanager.co.uk/checkout/?edd_license_key=' . $value
 							);
 
 							$license_status = 'license-expires-soon-notice';

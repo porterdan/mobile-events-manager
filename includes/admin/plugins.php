@@ -41,9 +41,9 @@ function mem_plugin_row_meta( $links, $file ) {
 		return $links;
 	}
 
-	$mem_links[] = '<a href="http://mobile-events-manager.co.uk/support/" target="_blank">' . __( 'Support Docs', 'mobile-events-manager' ) . '</a>';
-	$mem_links[] = '<a href="http://mobile-events-manager.co.uk/donate/" target="_blank">' . __( 'Donate', 'mobile-events-manager' ) . '</a>';
-	$mem_links[] = '<a href="http://http://mobile-events-manager.co.uk/add-ons/" target="_blank">' . __( 'Extensions', 'mobile-events-manager' ) . '</a>';
+	$mem_links[] = '<a href="http://mobileeventsmanager.co.uk/support/" target="_blank">' . __( 'Support Docs', 'mobile-events-manager' ) . '</a>';
+	$mem_links[] = '<a href="http://mobileeventsmanager.co.uk/donate/" target="_blank">' . __( 'Donate', 'mobile-events-manager' ) . '</a>';
+	$mem_links[] = '<a href="http://http://mobileeventsmanager.co.uk/add-ons/" target="_blank">' . __( 'Extensions', 'mobile-events-manager' ) . '</a>';
 
 	return array_merge( $links, $mem_links );
 
