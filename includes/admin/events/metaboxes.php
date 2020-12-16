@@ -1788,7 +1788,7 @@ function mem_event_overview_metabox_event_client_notes_row( $event_id ) {
 				array(
 					'name'        => '_mem_event_notes',
 					'placeholder' => __( 'Information entered here is visible by both clients and employees', 'mobile-events-manager' ),
-					'value'       => esc_attr( $mem_event->data['notes'] ),
+					'value'       => $mem_event->data['notes'],
 				)
 			);
 			?>

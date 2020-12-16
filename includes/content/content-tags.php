@@ -302,6 +302,11 @@ function mem_setup_content_tags() {
 			'function'    => 'mem_content_tag_additional_cost',
 		),
 		array(
+			'tag'         => 'client_notes',
+			'description' => __( 'The client notes associated with the event, viewable in the client area', 'mobile-events-manager' ),
+			'function'    => 'mem_content_tag_client_notes',
+		),
+		array(
 			'tag'         => 'admin_notes',
 			'description' => __( 'The admin notes associated with the event', 'mobile-events-manager' ),
 			'function'    => 'mem_content_tag_admin_notes',
@@ -1147,6 +1152,20 @@ function mem_content_tag_client_password( $event_id = '', $client_id = '' ) {
 
 	return $return;
 } // mem_content_tag_client_password
+
+/**
+ * Content tag: client_notes.
+ * Client notes associated with event.
+ *
+ * @param int $event_id The event ID.
+ *
+ * @return str Event client notes.
+ *
+ * Added in 1.0.4
+ */
+function mem_content_tag_client_notes( $event_id = '' ) {
+	return ! empty( $event_id ) ? get_post_meta( $event_id, '_mem_event_notes', true ) : '';
+} // mem_content_tag_client_notes
 
 /**
  * Content tag: admin_notes.

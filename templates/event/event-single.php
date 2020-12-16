@@ -107,7 +107,7 @@ global $mem_event;
 
       <div class="single-event-field full">     
         <div class="mem-heading"><?php _e( 'Function Notes', 'mobile-events-manager' ); ?></div>
-        {admin_notes}
+        {client_notes}
       </div>
 
     </div>
