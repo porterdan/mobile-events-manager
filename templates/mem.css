@@ -956,3 +956,34 @@ p.view_current_playlist {
 	color: #F90;
 	text-decoration: underline;
 }
+
+/* Single Event */
+
+.mem-s-event {
+	width:100%;
+	max-width:100%;
+}
+#mem-singleevent-details .mem-heading {
+	font-size: 15px;
+	padding: 5px;
+	background: hsla(38, 100%, 50%, 0.28);
+	color: #404040;
+	margin: 15px 0;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#mem-singleevent-details .full {
+	width:100%;
+}
+#mem-singleevent-details .half {
+	width:47%;
+	margin:0 1%;
+	display: inline-block;
+}
+
+@media only screen and (max-width:991px){
+	#mem-singleevent-details .half {
+		width:100%;
+		display: block;
+	}
+}
