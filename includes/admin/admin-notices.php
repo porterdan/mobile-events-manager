@@ -39,7 +39,7 @@ function mem_dismissed_notices() {
  */
 function mem_is_notice_dismissed( $notice ) {
 
-	$dismissed = mem_dismissed_notices();
+	$dismissed = (array) mem_dismissed_notices();
 
 	if ( array_key_exists( $notice, $dismissed ) ) {
 		return true;
@@ -113,7 +113,7 @@ function mem_admin_notices() {
 			echo '<div class="notice notice-info is-dismissible">';
 			echo '<p>' .
 			sprintf(
-					/* translators: %s: URL of site */
+				/* translators: %s: URL of site */
 				wp_kses_post( 'You have unattended enquiries. <a href="%s">Click here</a> to manage.', 'mobile-events-manager' ),
 				wp_kses_post( admin_url( 'edit.php?post_type=mem-event&post_status=mem-unattended' ) )
 			) . '</p>';
