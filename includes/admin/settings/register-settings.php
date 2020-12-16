@@ -409,7 +409,7 @@ function mem_get_registered_settings() {
 					'show_active_only'    => array(
 						'id'   => 'show_active_only',
 						'name' => sprintf( esc_html__( 'Hide Inactive %s?', 'mobile-events-manager' ), esc_html( mem_get_label_plural() ) ),
-						'desc' => sprintf( wp_kses( 'Select to include only active %1$s within the <code>All</code> view on the %1$s screen.', 'mobile-events-manager' ), mem_get_label_plural( true ) ),
+						'desc' => sprintf( 'Select to include only active %1$s within the <code>All</code> view on the %1$s screen.', 'mobile-events-manager', mem_get_label_plural( true ) ),
 						'type' => 'checkbox',
 					),
 					'employer'            => array(
@@ -510,7 +510,7 @@ function mem_get_registered_settings() {
 					'playlist_limit'    => array(
 						'id'   => 'playlist_limit',
 						'name' => __( 'Playlist Limit?', 'mobile-events-manager' ),
-						'desc' => sprintf( wp_kses( 'Set the global limit for the number of entries a playlist can contain or enter <code>0</code> for no limit. Can be overridden per %s', 'mobile-events-manager' ), esc_html( mem_get_label_singular( true ) ) ),
+						'desc' => sprintf('Set the global limit for the number of entries a playlist can contain or enter <code>0</code> for no limit. Can be overridden per %s', 'mobile-events-manager', esc_html( mem_get_label_singular( true ) ) ),
 						'type' => 'number',
 						'size' => 'small',
 						'std'  => '0',
@@ -570,8 +570,8 @@ function mem_get_registered_settings() {
 					'package_contact_btn'      => array(
 						'id'   => 'package_contact_btn',
 						'name' => __( 'Add Contact Button?', 'mobile-events-manager' ),
-						'hint' => sprintf( wp_kses( 'Select to auto add a contact button to the end of package/addons post content. The link will redirect to the <code>Contact Page</code>page as defined in <a href="%s">Pages</a>', 'mobile-events-manager' ), admin_url( 'admin.php?page=mem-settings&tab=client_zone&section=pages' ) ),
-						'desc' => sprintf( wp_kses( 'If you use the <a href="%s" target="_blank">Dynamic Contact Forms</a> add-on, the package/addon will be auto selected on page load', 'mobile-events-manager' ), 'http://mem.co.uk/products/dynamic-contact-forms/' ),
+						'hint' => sprintf('Select to auto add a contact button to the end of package/addons post content. The link will redirect to the <code>Contact Page</code>page as defined in <a href="%s">Pages</a>', 'mobile-events-manager', admin_url( 'admin.php?page=mem-settings&tab=client_zone&section=pages' ) ),
+						'desc' => sprintf( 'If you use the <a href="%s" target="_blank">Dynamic Contact Forms</a> add-on, the package/addon will be auto selected on page load', 'mobile-events-manager', 'http://mem.co.uk/products/dynamic-contact-forms/' ),
 						'type' => 'checkbox',
 					),
 					'package_contact_btn_text' => array(
@@ -976,7 +976,7 @@ function mem_get_registered_settings() {
 					'quotes_page'    => array(
 						'id'      => 'quotes_page',
 						'name'    => __( 'Online Quotes Page', 'mobile-events-manager' ),
-						'desc'    => sprintf( wp_kses( 'Select the page to use for online %s quotes. Needs to contain the shortcode <code>[mem-quote]</code>', 'mobile-events-manager' ), esc_html( mem_get_label_singular( true ) ) ),
+						'desc'    => sprintf('Select the page to use for online %s quotes. Needs to contain the shortcode <code>[mem-quote]</code>', 'mobile-events-manager', esc_html( mem_get_label_singular( true ) ) ),
 						'type'    => 'select',
 						'options' => mem_list_pages(),
 					),
@@ -1297,7 +1297,7 @@ function mem_get_registered_settings() {
 						'name'    => __( 'Default Payment Type', 'mobile-events-manager' ),
 						'desc'    => sprintf(
 							__( 'What is the default method of payment? i.e. if you select an %1$s %2$s as paid how should we log it?', 'mobile-events-manager' ),
-							wp_kses( mem_get_label_singular( true ) ),
+							mem_get_label_singular( true ),
 							mem_get_balance_label()
 						),
 						'type'    => 'select',

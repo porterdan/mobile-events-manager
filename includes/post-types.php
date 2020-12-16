@@ -71,7 +71,7 @@ function mem_register_post_types() {
 		'map_meta_cap'      => true,
 		'has_archive'       => true,
 		'supports'          => apply_filters( 'mem_event_supports', false ),
-		'menu_icon'         => plugins_url( 'mobile-events-manager/assets/images/mem-menu-16x16.jpg' ),
+		'menu_icon'         => plugins_url( 'mobile-events-manager/assets/images/mem-menu-16x16.png' ),
 		'taxonomies'        => array( 'mem-event' ),
 	);
 	register_post_type( 'mem-event', apply_filters( 'mem_event_post_type_args', $event_args ) );
