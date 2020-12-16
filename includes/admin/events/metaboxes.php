@@ -1282,23 +1282,19 @@ function mem_event_overview_metabox_primary_employee_row( $event_id ) {
 	}
 
 	?>
-	<div class="mem-event-employee-fields">
-		<div class="mem-event-primary-employee">
-			<span class="mem-repeatable-row-setting-label">
-				<?php printf( '%s', $artist ); ?>
-			</span>
-
-			<?php
-			echo MEM()->html->employee_dropdown(
-				array(
-					'selected'    => $employee_id,
-					'group'       => mem_is_employer() ? true : false,
-					'chosen'      => true,
-					'placeholder' => sprintf( esc_html__( 'Select %s', 'mobile-events-manager' ), $artist ),
-				)
-			);
-			?>
-		</div>
+   <div class="mem-event-employee-fields">
+        <div class="mem-event-primary-employee">
+            <span class="mem-repeatable-row-setting-label">
+                <?php printf( '%s', $artist ); ?>
+            </span>
+            
+            <?php echo MEM()->html->employee_dropdown( array(
+                'selected'    => $employee_id,
+                'group'       => mem_is_employer() ? true : false,
+                'chosen'      => true,
+                'placeholder' => sprintf( __( 'Select %s', 'mobile-events-manager' ), $artist )
+            ) ); ?>
+        </div>
 
 		<?php if ( mem_get_option( 'enable_employee_payments' ) && mem_employee_can( 'edit_txns' ) ) : ?>
 
