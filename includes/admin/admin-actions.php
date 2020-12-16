@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function mem_process_actions() {
-	if ( isset( $_POST['mem-action'] ) || ! sanitize_text_field( wp_unslash( $_POST['mem-action'] ) ) ) {
+	if ( isset( $_POST['mem-action'] )) {
 
 		if ( isset( $_FILES ) ) {
 			$_POST['FILES'] = $_FILES;

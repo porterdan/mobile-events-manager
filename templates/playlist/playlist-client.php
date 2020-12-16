@@ -63,11 +63,11 @@ $view_playlist_class  = ' mem-hidden';
 	<div id="mem_playlist_form_wrap" class="mem_clearfix">
 		<?php do_action( 'mem_before_playlist_form' ); ?>
 
-		<p class="head-nav"><a href="{event_url}"><?php esc_html_e( 'Back to %s', 'mobile-events-manager' ) . esc_attr( esc_html( mem_get_label_singular() ) ); ?></a></p>
+		<p class="head-nav"><a href="{event_url}"><?php esc_html_e( 'Go Back', 'mobile-events-manager' ); ?></a></p>
 
 		<p><?php echo esc_attr( $intro_text ); ?></p>
 		<p><?php echo esc_attr( $guest_text ); ?></p>
-		<p class="mem_playlist_share"><?php echo esc_html( $share_text ); ?></p>
+		<p class="mem_playlist_share"><?php echo $share_text; ?></p>
 
 		<?php if ( $mem_event->playlist_is_open() ) : ?>
 
@@ -118,7 +118,7 @@ $view_playlist_class  = ' mem-hidden';
 								</label>
 								<span class="mem-description"><?php echo esc_html( $category_description ); ?></span>
 
-								<?php echo esc_attr( mem_playlist_category_dropdown() ); ?>
+								<?php echo mem_playlist_category_dropdown(); ?>
 							</p>
 
 							<p class="mem_notes_field">
@@ -171,12 +171,11 @@ $view_playlist_class  = ' mem-hidden';
 
 		<p>
 		<?php
-		printf(
-			esc_html( __( 'Your playlist currently consists of <span class="song-count">%1$d %2$s</span> and is approximately <span class="playlist-length">%3$s</span> long. Your %4$s is scheduled for %5$s.', 'mobile-events-manager' ) ),
+		printf('Your playlist currently consists of <span class="song-count">%1$d %2$s</span> and is approximately <span class="playlist-length">%3$s</span> long. Your %4$s is scheduled for %5$s.', 'mobile-events-manager',
 			esc_attr( $total_entries ),
 			esc_html__( _n( 'song', 'songs', esc_attr( $total_entries ), 'mobile-events-manager' ) ),
 			'{playlist_duration}',
-			esc_attr( esc_html( mem_get_label_singular( true ) ) ),
+			mem_get_label_singular( true ),
 			'{event_duration}'
 		);
 		?>

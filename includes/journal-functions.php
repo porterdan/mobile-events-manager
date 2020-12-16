@@ -198,7 +198,7 @@ function mem_hide_journal_entries_pre_41( $clauses, $wp_comment_query ) {
 	global $wpdb, $wp_version;
 
 	if ( version_compare( floatval( $wp_version ), '4.1', '<' ) ) {
-		$clauses['where'] .= ' AND comment_type !== "mem-journal"';
+		$clauses['where'] .= ' AND comment_type != "mem-journal"';
 	}
 
 	return $clauses;
@@ -217,7 +217,7 @@ add_filter( 'comments_clauses', 'mem_hide_journal_entries_pre_41', 10, 2 );
 function mem_hide_journal_entries_from_feeds( $where, $wp_comment_query ) {
 	global $wpdb;
 
-	$where .= $wpdb->prepare( ' AND comment_type !== %s', 'mem-journal' );
+	$where .= $wpdb->prepare( ' AND comment_type != %s', 'mem-journal' );
 	return $where;
 } // mem_hide_journal_entries_from_feeds
 add_filter( 'comment_feed_where', 'mem_hide_journal_entries_from_feeds', 10, 2 );
@@ -250,7 +250,7 @@ function mem_remove_journal_entries_in_comment_counts( $stats, $post_id ) {
 		return $stats;
 	}
 
-	$where = 'WHERE comment_type !== "mem-journal"';
+	$where = 'WHERE comment_type != "mem-journal"';
 
 	if ( $post_id > 0 ) {
 		$where .= $wpdb->prepare( ' AND comment_post_ID = %d', $post_id );

@@ -400,7 +400,7 @@ function mem_get_txn_source() {
 
 	asort( $txn_src );
 
-	return esc_html( $txn_src );
+	return $txn_src;
 
 } // mem_get_txn_source
 
