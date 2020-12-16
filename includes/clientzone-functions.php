@@ -33,7 +33,7 @@ function mem_show_footer_in_client_zone() {
 		echo '<div id="mem-client-zone-footer">';
 		echo '<p>';
 		/* Translators: %1: Company Name %2: Version */
-		printf( esc_html__( 'Powered by <a href="%1$s" target="_blank">Mobile Events Manager (MEM)</a>, version %2$s', 'mobile-events-manager' ), 'http://mem.co.uk', MEM_VERSION_NUM );
+		printf( esc_html__( 'Powered by <a href="%1$s" target="_blank">Mobile Events Manager (MEM)</a>, version %2$s', 'mobile-events-manager' ), 'http://mobile-events-manager.co.uk', MEM_VERSION_NUM );
 
 		echo '</p>';
 		echo '</div>';

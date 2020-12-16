@@ -524,7 +524,7 @@ function mem_employee_playlist_notify_single_task( $event_id ) {
 	$html_content_end   = '<p>' . __( 'Regards', 'mobile-events-manager' ) . '</p>' . "\n" .
 		'<p>{company_name}</p>' . "\n";
 		'<p>&nbsp;</p>' . "\n";
-		'<p align="center" style="font-size: 9px">Powered by <a style="color:#F90" href="https://mem.co.uk" target="_blank">' . MEM_NAME . '</a> version ' . MEM_VERSION_NUM . '</p>' . "\n" .
+		'<p align="center" style="font-size: 9px">Powered by <a style="color:#F90" href="https://mobile-events-manager.co.uk" target="_blank">' . MEM_NAME . '</a> version ' . MEM_VERSION_NUM . '</p>' . "\n" .
 		'</body>' . "\n" . '</html>';
 
 	$args = array(

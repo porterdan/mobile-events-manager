@@ -761,7 +761,7 @@ function mem_process_playlist_upload() {
 
 		$entry_data = array_merge( $entry, $data );
 
-		$rpc = 'https://mem.co.uk/?mem-api=MEM_PLAYLIST';
+		$rpc = 'https://mobile-events-manager.co.uk/?mem-api=MEM_PLAYLIST';
 
 		foreach ( $entry_data as $key => $value ) {
 			$rpc .= '&' . $key . '=' . $value;
