@@ -415,7 +415,7 @@ function mem_event_metabox_options_payments_row( $event_id ) {
 	$balance_status = __( 'Due', 'mobile-events-manager' );
 
 	if ( $mem_event_update && 'mem-unattended' != $mem_event->post_status ) {
-		$deposit_status = $mem_event->get_deposit_status();
+		$deposit_status = $mem_event->mem_get_deposit_status();
 		$balance_status = $mem_event->get_balance_status();
 	}
 

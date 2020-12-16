@@ -1376,14 +1376,14 @@ add_action( 'wp_ajax_remove_employee_from_event', 'mem_remove_employee_from_even
  * @since 1.4.7
  * @return str
  */
-function mem_mem_get_template_title_ajax() {
+function mem_get_template_title_ajax() {
 	$title           = get_the_title( sanitize_text_field( wp_unslash( $_POST['template'] ) ) );
 	$result['title'] = $title;
 	echo json_encode( $result );
 
 	die();
-} // mem_mem_get_template_title_ajax
-add_action( 'wp_ajax_mem_get_template_title', 'mem_mem_get_template_title_ajax' );
+} // mem_get_template_title_ajax
+add_action( 'wp_ajax_mem_get_template_title', 'mem_get_template_title_ajax' );
 
 /**
  * Update the email content field with the selected template.

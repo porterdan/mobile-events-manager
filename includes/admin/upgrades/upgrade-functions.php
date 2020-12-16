@@ -690,7 +690,7 @@ function mem_v147_upgrade_event_tasks() {
 				$tasks['fail-enquiry'] = current_time( 'timestamp' );
 			}
 
-			if ( 'Paid' == $event->get_deposit_status() ) {
+			if ( 'Paid' == $event->mem_get_deposit_status() ) {
 				$tasks['request-deposit'] = current_time( 'timestamp' );
 			}
 

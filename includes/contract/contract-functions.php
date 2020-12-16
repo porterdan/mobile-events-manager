@@ -212,7 +212,7 @@ function mem_sign_event_contract( $event_id, $details ) {
 	);
 
 	// Update the event status with awaitingdeposit if configured to wait for deposit before issuing confirmation.
-	if ( mem_require_deposit_before_confirming() && ( 'Paid' !== $event->get_deposit_status() ) ) {
+	if ( mem_require_deposit_before_confirming() && ( 'Paid' !== $event->mem_get_deposit_status() ) ) {
 		mem_update_event_status(
 			$event->ID,
 			'mem-awaitingdeposit',

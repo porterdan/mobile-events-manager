@@ -291,7 +291,7 @@ function mem_get_tasks_for_event( $event_id ) {
 	$guest_playlist = mem_get_playlist_entries( $event_id, $guest_args );
 
 	if ( in_array( $event->post_status, array( 'mem-awaitingdeposit', 'mem-approved', 'mem-contract' ) ) ) {
-		if ( 'Due' === $event->get_deposit_status() ) {
+		if ( 'Due' === $event->mem_get_deposit_status() ) {
 			$tasks['request-deposit'] = mem_get_task_name( 'request-deposit' );
 		}
 		if ( 'Due' === $event->get_balance_status() ) {

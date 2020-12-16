@@ -713,7 +713,7 @@ function mem_count_events_with_package( $package_id ) {
  * @param   arr $args   Arguments for package retrieval. See @defaults.
  * @return  arr|false   Array of WP_Post objects.
  */
-function mem_get_available_packages( $args = array() ) {
+function mem_mem_get_available_packages( $args = array() ) {
 
 	if ( ! mem_packages_enabled() ) {
 		return false;
@@ -742,7 +742,7 @@ function mem_get_available_packages( $args = array() ) {
 
 	return apply_filters( 'mem_available_packages', $packages );
 
-} // mem_get_available_packages
+} // mem_mem_get_available_packages
 
 /**
  * List all available packages. If an employee ID is provided, list what that

@@ -205,7 +205,7 @@ class MEM_Event {
 		$this->get_employee();
 		$this->get_date();
 		$this->get_price();
-		$this->get_deposit();
+		$this->mem_get_deposit();
 
 		return true;
 	} // setup_event
@@ -870,7 +870,7 @@ class MEM_Event {
 	 * @since 1.3
 	 * @return float
 	 */
-	public function get_deposit() {
+	public function mem_get_deposit() {
 
 		if ( ! isset( $this->deposit ) ) {
 
@@ -896,7 +896,7 @@ class MEM_Event {
 		 * @param str|int $id The event ID.
 		 */
 		return apply_filters( 'mem_get_event_deposit', $this->deposit, $this->ID );
-	} // get_deposit
+	} // mem_get_deposit
 
 	/**
 	 * Retrieve the remaining event deposit
@@ -908,10 +908,10 @@ class MEM_Event {
 
 		$income = $this->get_total_income();
 
-		if ( $income >= $this->get_deposit() ) {
+		if ( $income >= $this->mem_get_deposit() ) {
 			$return = '0';
 		} else {
-			$return = ( $this->get_deposit() - $income );
+			$return = ( $this->mem_get_deposit() - $income );
 		}
 
 		return apply_filters( 'mem_get_remaining_deposit', $return, $this->ID );
@@ -924,17 +924,17 @@ class MEM_Event {
 	 * @since 1.3
 	 * @return str
 	 */
-	public function get_deposit_status() {
+	public function mem_get_deposit_status() {
 
 		if ( ! isset( $this->deposit_status ) ) {
 
 			$this->deposit_status = get_post_meta( $this->ID, '_mem_event_deposit_status', true );
 
-			if ( ! $this->deposit_status || 'Paid' !== $this->deposit_status || $this->get_deposit() > 0 ) {
+			if ( ! $this->deposit_status || 'Paid' !== $this->deposit_status || $this->mem_get_deposit() > 0 ) {
 
 				$this->deposit_status = 'Due';
 
-				if ( mem_sanitize_amount( $this->get_total_income() ) >= mem_sanitize_amount( $this->get_deposit() ) ) {
+				if ( mem_sanitize_amount( $this->get_total_income() ) >= mem_sanitize_amount( $this->mem_get_deposit() ) ) {
 
 					$this->deposit_status = 'Paid';
 
@@ -958,7 +958,7 @@ class MEM_Event {
 		 * @param str|int $id The event ID.
 		 */
 		return apply_filters( 'mem_get_event_deposit_status', $this->deposit_status, $this->ID );
-	} // get_deposit_status
+	} // mem_get_deposit_status
 
 	/**
 	 * Retrieve the event balance status

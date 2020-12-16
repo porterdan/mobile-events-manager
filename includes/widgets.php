@@ -149,7 +149,7 @@ class mem_availability_widget extends WP_Widget {
 
 		/* Check for form submission & process */
 		if ( isset( $_POST['mem_widget_avail_submit'] ) && $_POST['mem_widget_avail_submit'] === $instance['submit_text'] ) {
-			$dj_avail = dj_available( '', sanitize_text_field( wp_unslash( $_POST['widget_check_date'] ) ) );
+			$dj_avail = mem_dj_available( '', sanitize_text_field( wp_unslash( $_POST['widget_check_date'] ) ) );
 
 			if ( isset( $dj_avail ) ) {
 				if ( ! empty( $dj_avail['available'] ) ) {

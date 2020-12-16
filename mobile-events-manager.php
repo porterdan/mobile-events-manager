@@ -1,4 +1,3 @@
-<script esc_url( src="https://kit.fontawesome.com/1d2ccdc5ab.js" ) crossorigin="anonymous"></script>
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -34,12 +33,12 @@ along with Mobile Events Manager (MEM); if not, see https://www.gnu.org/licenses
  */
 
 
-if ( ! class_exists( 'Mobile_DJ_Manager' ) ) :
+if ( ! class_exists( 'Mobile_Events_Manager' ) ) :
 	/**
-	 * Class: Mobile_DJ_Manager
+	 * Class: Mobile_Events_Manager
 	 * Description: The main MEM class
 	 */
-	class Mobile_DJ_Manager {
+	class Mobile_Events_Manager {
 		private static $instance;
 
 		public $api;
@@ -73,13 +72,13 @@ if ( ! class_exists( 'Mobile_DJ_Manager' ) ) :
 		 *
 		 * @since 1.3
 		 * @param
-		 * @return The one true Mobile_DJ_Manager
+		 * @return The one true Mobile_Events_Manager
 		 */
 		public static function instance() {
 			global $mem, $mem_debug, $clientzone, $wp_version;
 
-			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Mobile_DJ_Manager ) ) {
-				self::$instance = new Mobile_DJ_Manager();
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Mobile_Events_Manager ) ) {
+				self::$instance = new Mobile_Events_Manager();
 
 				self::$instance->setup_constants();
 
@@ -309,13 +308,13 @@ if ( ! class_exists( 'Mobile_DJ_Manager' ) ) :
 			);
 		} // load_textdomain
 
-	} // class Mobile_DJ_Manager
+	} // class Mobile_Events_Manager
 
 endif;
 
 /** Mobile DJ Manager */
 function MEM() {
-	return Mobile_DJ_Manager::instance();
+	return Mobile_Events_Manager::instance();
 }
 
 MEM();

@@ -1948,7 +1948,7 @@ function mem_content_tag_event_package_description( $event_id = '' ) {
 		return;
 	}
 
-	return get_event_package_description( $event_id );
+	return mem_get_event_package_description( $event_id );
 } // mem_content_tag_event_package_description
 
 /**

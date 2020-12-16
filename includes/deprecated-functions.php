@@ -151,7 +151,7 @@ function display_price( $amount, $symbol = true ) {
  * @since   1.3
  * @remove  1.5
  */
-function get_deposit( $cost = '' ) {
+function mem_get_deposit( $cost = '' ) {
 
 	_deprecated_function( __FUNCTION__, '1.3', 'mem_calculate_deposit()' );
 
@@ -178,7 +178,7 @@ function get_deposit( $cost = '' ) {
 	}
 
 	return $deposit;
-} // get_deposit
+} // mem_get_deposit
 
 /**
  * Write to the gateway log file.
@@ -584,7 +584,7 @@ function get_addon_name( $slug ) {
  *
  * @since   1.4
  */
-function get_addon_details( $slug ) {
+function mem_get_addon_details( $slug ) {
 	_deprecated_function( __FUNCTION__, '1.4' );
 	if ( empty( $slug ) ) {
 		return false;
@@ -605,7 +605,7 @@ function get_addon_details( $slug ) {
 	$addon['cost'] = $equipment[ $slug ][7];
 
 	return $addon;
-} // get_addon_details
+} // mem_get_addon_details
 
 /**
  * Calculate the event cost as the package changes
@@ -720,7 +720,7 @@ function mem_remove_holiday( $entry_id ) {
  * @params:
  * @returns: bool    true : false
  */
-function is_dj( $user = '' ) {
+function mem_is_dj( $user = '' ) {
 	_deprecated_function( __FUNCTION__, '1.5.6', 'mem_is_employee()' );
 	if ( ! empty( $user ) && user_can( $user, 'dj' ) ) {
 		return true;
@@ -731,10 +731,10 @@ function is_dj( $user = '' ) {
 	}
 
 	return false;
-} // is_dj
+} // mem_is_dj
 
 /**
- * dj_can
+ * mem_mem_dj_can
  * 19/03/2015
  * Determine if the DJ is allowed to carry out the current action
  *
@@ -742,7 +742,7 @@ function is_dj( $user = '' ) {
  *  @params: $task
  *  @returns: true : false
  */
-function dj_can( $task ) {
+function mem_mem_dj_can( $task ) {
 	_deprecated_function( __FUNCTION__, '1.5.6', 'mem_employee_can()' );
 	global $mem_settings;
 
@@ -773,7 +773,7 @@ function mem_get_djs( $role = 'dj' ) {
  * @param   string|array $date   The date (Y-m-d) to check.
  * @return  array           $status array of user id's (['available'] | ['unavailable']
  */
-function dj_available( $employees = '', $roles = '', $date = '' ) {
+function mem_dj_available( $employees = '', $roles = '', $date = '' ) {
 	_deprecated_function( __FUNCTION__, '1.5.6', 'mem_do_availability_check()' );
 	return mem_do_availability_check( $date, $employees, $roles );
-} // dj_available
+} // mem_dj_available

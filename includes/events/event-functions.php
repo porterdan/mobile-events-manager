@@ -335,7 +335,7 @@ function mem_get_event_data( $event ) {
 			'balance'           => $mem_event->get_balance(),
 			'balance_status'    => $mem_event->get_balance_status(),
 			'deposit'           => $mem_event->deposit,
-			'deposit_status'    => $mem_event->get_deposit_status(),
+			'deposit_status'    => $mem_event->mem_get_deposit_status(),
 			'remaining_deposit' => $mem_event->get_remaining_deposit(),
 			'cost'              => $mem_event->price,
 		),
@@ -1155,7 +1155,7 @@ function mem_get_event_deposit( $event_id = 0 ) {
 	}
 
 	$event = new MEM_Event( $event_id );
-	return esc_html( $event->get_deposit() );
+	return esc_html( $event->mem_get_deposit() );
 } // mem_get_event_deposit
 
 /**
@@ -1171,7 +1171,7 @@ function mem_get_event_deposit_status( $event_id ) {
 	}
 
 	$event = new MEM_Event( $event_id );
-	return esc_html( $event->get_deposit_status() );
+	return esc_html( $event->mem_get_deposit_status() );
 } // mem_get_event_deposit_status
 
 /**
@@ -1248,7 +1248,7 @@ function mem_mark_event_deposit_paid( $event_id ) {
 	$mem_event = new MEM_Event( $event_id );
 	$txn_id     = 0;
 
-	if ( 'Paid' === $mem_event->get_deposit_status() ) {
+	if ( 'Paid' === $mem_event->mem_get_deposit_status() ) {
 		return;
 	}
 

@@ -21,7 +21,7 @@ function mem_get_admin_page( $mem_page, $action = 'str' ) {
 		return;
 	}
 
-	$mydjplanner = array( 'mydjplanner', 'user_guides', 'mem_support', 'mem_forums' );
+	$mobile_events_manager = array( 'mobile_events_manager', 'user_guides', 'mem_support', 'mem_forums' );
 	$mem_pages  = array(
 		'wp_dashboard'        => 'index.php',
 		'dashboard'           => 'admin.php?page=mem-dashboard',
@@ -62,12 +62,12 @@ function mem_get_admin_page( $mem_page, $action = 'str' ) {
 		'transactions'        => 'edit.php?post_type=mem-transaction',
 		'updated'             => 'admin.php?page=mem-updated',
 		'about'               => 'admin.php?page=mem-about',
-		'mydjplanner'         => 'http://mem.co.uk',
+		'mobile_events_manager'         => 'http://mem.co.uk',
 		'user_guides'         => 'http://mem.co.uk/support/user-guides',
 		'mem_support'        => 'http://mem.co.uk/support',
 		'mem_forums'         => 'http://mem.co.uk/forums',
 	);
-	if ( in_array( $mem_page, $mydjplanner ) ) {
+	if ( in_array( $mem_page, $mobile_events_manager ) ) {
 		$mem_page = $mem_pages[ $mem_page ];
 	} else {
 		$mem_page = admin_url( $mem_pages[ $mem_page ] );

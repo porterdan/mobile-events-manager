@@ -16,7 +16,7 @@
 
 global $mem_event;
 $deposit_disabled = '';
-if ( 'Paid' === $mem_event->get_deposit_status() ) {
+if ( 'Paid' === $mem_event->mem_get_deposit_status() ) {
 	$deposit_disabled = ' disabled = "true"';
 }
 

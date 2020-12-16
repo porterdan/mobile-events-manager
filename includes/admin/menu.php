@@ -638,7 +638,7 @@ function mem_admin_toolbar( $admin_bar ) {
 			'id'     => 'mem-support',
 			'parent' => 'mem',
 			'title'  => sprintf( esc_html__( '%1$sSupport%2$s', 'mobile-events-manager' ), '<span style="color:#F90">', '</span>' ),
-			'href'   => 'http://www.mydjplanner.co.uk/forums/',
+			'href'   => 'http://www.mobile_events_manager.co.uk/forums/',
 			'meta'   => array(
 				'title'  => __( 'MEM Support Forums', 'mobile-events-manager' ),
 				'target' => '_blank',
