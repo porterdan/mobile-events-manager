@@ -49,6 +49,7 @@ function mem_login_form( $redirect = '' ) {
  * @return void
  */
 function mem_process_login_form( $data ) {
+echo "TEST";
 	if ( wp_verify_nonce( $data['mem_login_nonce'], 'mem-login-nonce' ) ) {
 		$user_data = get_user_by( 'login', $data['mem_user_login'] );
 

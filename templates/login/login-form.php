@@ -41,7 +41,7 @@ global $mem_login_redirect; ?>
 
 			<p class="mem-login-submit">
 				<input type="hidden" name="mem_redirect" value="<?php echo $mem_login_redirect; ?>"/>
-				<input type="hidden" name="mem_login_nonce" value="<?php echo wp_create_nonce( 'mem-login-nonce' ) ); ?>"/>
+				<input type="hidden" name="mem_login_nonce" value="<?php echo wp_create_nonce( 'mem-login-nonce' ); ?>"/>
 				<input type="hidden" name="mem_action" value="user_login"/>
 				<input id="mem_login_submit" type="submit" class="mem_submit" value="<?php printf( __( 'Login to %s', 'mobile-events-manager' ), '{application_name}' ); ?>" />
 			</p>
