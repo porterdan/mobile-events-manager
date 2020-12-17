@@ -1,0 +1,342 @@
+<?php
+/**
+ * Transaction Object
+ *
+ * @package TMEM
+ * @subpackage Transactions
+ * @copyright Copyright (c) 2020, Jack Mawhinney, Dan Porter
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since 1.3
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * TMEM_Txn Class
+ *
+ * @since 1.3
+ */
+class TMEM_Txn {
+
+	/**
+	 * The transaction ID
+	 *
+	 * @since 1.3
+	 */
+	public $ID = 0;
+
+	/**
+	 * The transaction payment status
+	 *
+	 * @since 1.4
+	 */
+	public $payment_status;
+
+	/**
+	 * The transaction date
+	 *
+	 * @since 1.3
+	 */
+	public $date;
+
+	/**
+	 * The transaction price
+	 *
+	 * @since 1.3
+	 */
+	public $price = 0;
+
+	/**
+	 * The transaction recipient
+	 *
+	 * @since 1.3
+	 */
+	public $recipient_id = 0;
+
+	/**
+	 * The transaction currency
+	 *
+	 * @since 1.3.8
+	 */
+	public $currency;
+
+	/**
+	 * Declare the default properities in WP_Post as we can't extend it
+	 * Anything we've delcared above has been removed.
+	 */
+	public $post_author           = 0;
+	public $post_date             = '0000-00-00 00:00:00';
+	public $post_date_gmt         = '0000-00-00 00:00:00';
+	public $post_content          = '';
+	public $post_title            = '';
+	public $post_excerpt          = '';
+	public $post_status           = 'tmem-income';
+	public $comment_status        = 'closed';
+	public $ping_status           = 'closed';
+	public $post_password         = '';
+	public $post_name             = '';
+	public $to_ping               = '';
+	public $pinged                = '';
+	public $post_modified         = '0000-00-00 00:00:00';
+	public $post_modified_gmt     = '0000-00-00 00:00:00';
+	public $post_content_filtered = '';
+	public $post_parent           = 0;
+	public $guid                  = '';
+	public $menu_order            = 0;
+	public $post_mime_type        = '';
+	public $comment_count         = 0;
+	public $filter;
+
+	/**
+	 * Get things going
+	 *
+	 * @since 1.3
+	 */
+	public function __construct( $_id = false, $_args = array() ) {
+		$txn = WP_Post::get_instance( $_id );
+
+		return $this->setup_txn( $txn );
+	} // __construct
+
+	/**
+	 * Given the event data, let's set the variables
+	 *
+	 * @since 1.3
+	 * @param obj $event The Event Object
+	 * @return bool If the setup was successful or not
+	 */
+	private function setup_txn( $txn ) {
+		if ( ! is_object( $txn ) ) {
+			return false;
+		}
+
+		if ( ! is_a( $txn, 'WP_Post' ) ) {
+			return false;
+		}
+
+		if ( 'tmem-transaction' !== $txn->post_type ) {
+			return false;
+		}
+
+		foreach ( $txn as $key => $value ) {
+			switch ( $key ) {
+				default:
+					$this->$key = $value;
+					break;
+			}
+		}
+
+		$this->get_status();
+		$this->get_currency();
+		$this->get_price();
+		$this->get_recipient_id();
+
+		return true;
+	} // setup_txn
+
+	/**
+	 * Magic __get function to dispatch a call to retrieve a private property
+	 *
+	 * @since 1.3
+	 */
+	public function __get( $key ) {
+		if ( method_exists( $this, 'get_' . $key ) ) {
+			return call_user_func( array( $this, 'get_' . $key ) );
+		} else {
+			return new WP_Error( 'tmem-txn-invalid-property', sprintf( esc_html__( "Can't get property %s", 'mobile-events-manager' ), $key ) );
+		}
+	} // __get
+
+	/**
+	 * Creates a transaction
+	 *
+	 * @since 1.3
+	 * @param arr $data Array of attributes for a transaction. See $defaults.
+	 * @return mixed false if data isn't passed and class not instantiated for creation, or New Transaction ID
+	 */
+	public function create( $data = array(), $meta = array() ) {
+
+		if ( 0 !== $this->id ) {
+			return false;
+		}
+
+		remove_action( 'save_post_tmem-transaction', 'tmem_save_txn_post', 10, 3 );
+
+		$default_data = array(
+			'post_type'    => 'tmem-transaction',
+			'post_status'  => 'tmem-income',
+			'post_title'   => __( 'New Transaction', 'mobile-events-manager' ),
+			'post_content' => '',
+		);
+
+		$default_meta = array(
+			'_tmem_txn_source'   => tmem_get_option( 'default_type', __( 'Cash', 'mobile-events-manager' ) ),
+			'_tmem_txn_currency' => tmem_get_currency(),
+			'_tmem_txn_status'   => 'Pending',
+		);
+
+		$data = wp_parse_args( $data, $default_data );
+		$meta = wp_parse_args( $meta, $default_meta );
+
+		do_action( 'tmem_pre_txn_create', $data, $meta );
+
+		$id = wp_insert_post( $data, true );
+
+		if ( is_wp_error( $id ) ) {
+			TMEM()->debug->log_it( 'ERROR: ' . $id->get_error_message() );
+		}
+
+		$txn = WP_Post::get_instance( $id );
+
+		if ( $txn ) {
+
+			tmem_update_txn_meta( $txn->ID, $meta );
+
+			wp_update_post(
+				array(
+					'ID'         => $id,
+					'post_title' => tmem_get_option( 'event_prefix' ) . $id,
+					'post_name'  => tmem_get_option( 'event_prefix' ) . $id,
+				)
+			);
+		}
+
+		do_action( 'tmem_post_txn_create', $id, $data, $meta );
+
+		add_action( 'save_post_tmem-transaction', 'tmem_save_txn_post', 10, 3 );
+
+		$cache_key = md5( sprintf( 'tmem_event_income_txns_%s', $data['post_parent'] ) );
+		delete_transient( $cache_key );
+
+		return $this->setup_txn( $txn );
+
+	} // create
+
+	/**
+	 * Retrieve the ID
+	 *
+	 * @since 1.3
+	 * @return int
+	 */
+	public function get_ID() {
+		return $this->ID;
+	} // get_ID
+
+	/**
+	 * Retrieve the transaction date
+	 *
+	 * @since 1.3
+	 * @return str Y-m-d H:i:s
+	 */
+	public function get_date() {
+		return $this->post_date;
+	} // get_date
+
+	/**
+	 * Retrieve the payment status
+	 *
+	 * @since 1.4
+	 * @return str
+	 */
+	public function get_status() {
+		if ( empty( $this->payment_status ) ) {
+			$this->payment_status = get_post_meta( $this->ID, '_tmem_txn_status', true );
+		}
+
+		return $this->payment_status;
+	} // get_status
+
+	/**
+	 * Retrieve the transaction currency
+	 *
+	 * @since 1.3.8
+	 * @return str
+	 */
+	public function get_currency() {
+		if ( empty( $this->currency ) ) {
+			$this->currency = get_post_meta( $this->ID, '_tmem_txn_currency', true );
+		}
+
+		return strtoupper( $this->currency );
+	} // get_currency
+
+	/**
+	 * Retrieve the transaction price
+	 *
+	 * @since 1.3
+	 * @return str Y-m-d H:i:s
+	 */
+	public function get_price() {
+		if ( empty( $this->price ) ) {
+			$this->price = get_post_meta( $this->ID, '_tmem_txn_total', true );
+		}
+
+		return $this->price;
+	} // get_price
+
+	/**
+	 * Retrieve the transaction recipient
+	 *
+	 * @since 1.3
+	 * @return str Y-m-d H:i:s
+	 */
+	public function get_recipient_id() {
+
+		if ( empty( $this->recipient_id ) ) {
+
+			if ( 'tmem-income' === get_post_status( $this->ID ) ) {
+				$this->recipient_id = get_post_meta( $this->ID, '_tmem_payment_from', true );
+			} else {
+				$this->recipient_id = get_post_meta( $this->ID, '_tmem_payment_to', true );
+			}
+		}
+
+		return apply_filters( 'tmem_get_recipient_id', $this->recipient_id );
+	} // get_recipient_id
+
+	/**
+	 * Retrieve the transaction type.
+	 *
+	 * @since 1.3
+	 * @return bool
+	 */
+	public function get_type() {
+		$types = wp_get_object_terms( $this->ID, 'transaction-types' );
+
+		if ( ! empty( $types ) ) {
+			$return = $types[0]->name;
+		} else {
+			$return = __( 'No transaction type set', 'mobile-events-manager' );
+		}
+
+		return apply_filters( 'tmem_transaction_type', $return, $this->ID );
+	} // get_type
+
+	/**
+	 * Retrieve the transaction method.
+	 *
+	 * @since 1.4
+	 * @return bool
+	 */
+	public function get_method() {
+		$method = get_post_meta( $this->ID, '_tmem_txn_source', true );
+
+		return apply_filters( 'tmem_transaction_method', $method, $this->ID );
+	} // get_method
+
+	/**
+	 * Retrieve the transaction gateway.
+	 *
+	 * @since 1.3.8
+	 * @return str
+	 */
+	public function get_gateway() {
+		$gateway = get_post_meta( $this->ID, '_tmem_txn_gateway', true );
+
+		return apply_filters( 'tmem_transaction_gateway', $gateway, $this->ID );
+	} // get_gateway
+
+} // class TMEM_Txn
