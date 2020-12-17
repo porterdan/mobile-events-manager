@@ -46,8 +46,8 @@ function tmem_add_journal( $args = array(), $meta = array() ) {
 		'tmem_add_journal',
 		array(
 			'comment_post_ID'      => (int) $data['event_id'],
-			'comment_author'       => 'tmem' !== $comment_author ? $comment_author->display_name : 'TMEM',
-			'comment_author_email' => 'tmem' !== $comment_author ? $comment_author->user_email : tmem_get_option( 'system_email' ),
+			'comment_author'       => 'tmem' != $comment_author ? $comment_author->display_name : 'TMEM',
+			'comment_author_email' => 'tmem' != $comment_author ? $comment_author->user_email : tmem_get_option( 'system_email' ),
 			'comment_author_IP'    => '',
 			'comment_agent'        => '',
 			'comment_author_url'   => '',
@@ -55,7 +55,7 @@ function tmem_add_journal( $args = array(), $meta = array() ) {
 			'comment_date_gmt'     => current_time( 'mysql', 1 ),
 			'comment_content'      => $data['comment_content'],
 			'comment_type'         => 'tmem-journal',
-			'user_id'              => 'tmem' !== $comment_author ? $comment_author->ID : '0',
+			'user_id'              => 'tmem' != $comment_author ? $comment_author->ID : '0',
 			'comment_parent'       => 0,
 			'comment_approved'     => 1,
 		)
@@ -198,7 +198,7 @@ function tmem_hide_journal_entries_pre_41( $clauses, $wp_comment_query ) {
 	global $wpdb, $wp_version;
 
 	if ( version_compare( floatval( $wp_version ), '4.1', '<' ) ) {
-		$clauses['where'] .= ' AND comment_type !== "tmem-journal"';
+		$clauses['where'] .= ' AND comment_type != "tmem-journal"';
 	}
 
 	return $clauses;
@@ -217,7 +217,7 @@ add_filter( 'comments_clauses', 'tmem_hide_journal_entries_pre_41', 10, 2 );
 function tmem_hide_journal_entries_from_feeds( $where, $wp_comment_query ) {
 	global $wpdb;
 
-	$where .= $wpdb->prepare( ' AND comment_type !== %s', 'tmem-journal' );
+	$where .= $wpdb->prepare( ' AND comment_type != %s', 'tmem-journal' );
 	return $where;
 } // tmem_hide_journal_entries_from_feeds
 add_filter( 'comment_feed_where', 'tmem_hide_journal_entries_from_feeds', 10, 2 );
@@ -250,7 +250,7 @@ function tmem_remove_journal_entries_in_comment_counts( $stats, $post_id ) {
 		return $stats;
 	}
 
-	$where = 'WHERE comment_type !== "tmem-journal"';
+	$where = 'WHERE comment_type != "tmem-journal"';
 
 	if ( $post_id > 0 ) {
 		$where .= $wpdb->prepare( ' AND comment_post_ID = %d', $post_id );
