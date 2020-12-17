@@ -1119,7 +1119,7 @@ function tmem_content_tag_client_username( $event_id = '', $client_id = '' ) {
  *
  * @return str Event client notes.
  *
- * Added in 1.0.4
+ * Added in 1.5.7
  */
 function tmem_content_tag_client_notes( $event_id = '' ) {
 	return ! empty( $event_id ) ? get_post_meta( $event_id, '_tmem_event_notes', true ) : '';

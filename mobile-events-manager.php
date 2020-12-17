@@ -1,14 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Plugin Name: Mobile Events Manager
  * Plugin URI: https://www.mobileeventsmanager.co.uk
  * Description: The most efficient and versatile event management solution for WordPress.
- * Version: 1.0.4
+ * Version: 1.5.7
  * Date: 17 December 2020
  * Author: Jack Mawhinney, Dan Porter
  * Author URI: https://www.mobileeventsmanager.co.uk
@@ -32,6 +28,9 @@ You should have received a copy of the GNU General Public License
 along with TMEM Event Management; if not, see https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! class_exists( 'Mobile_Events_Manager' ) ) :
 	/**
