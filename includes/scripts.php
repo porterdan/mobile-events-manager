@@ -125,7 +125,7 @@ function tmem_register_styles() {
 	$templates_dir = tmem_get_theme_template_dir_name();
 	$css_dir       = TMEM_PLUGIN_URL . '/assets/css/';
 	$suffix        = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$file          = 'tmem' . $suffix . '.css';
+	$file          = 'tmem.css';
 
 	$child_theme_style_sheet  = trailingslashit( get_stylesheet_directory() ) . $templates_dir . $file;
 	$parent_theme_style_sheet = trailingslashit( get_template_directory() ) . $templates_dir . $file;

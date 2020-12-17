@@ -2,137 +2,115 @@
 /**
  * This template is used to display the details of a single event to the client.
  *
- * @version 1.0.1
- * @author Mike Howard
- * @since 1.3
- * @content_tag {client_*}
- * @content_tag {event_*}
- * @shortcodes Supported
+ * @version     1.0.1
+ * @author Jack Mawhinney, Dan Porter
+ * @since     1.3
+ * @content_tag   {client_*}
+ * @content_tag   {event_*}
+ * @shortcodes    Supported
  *
  * Do not customise this file!
  * If you wish to make changes, copy this file to your theme directory /theme/tmem-templates/event/event-single.php
- * @package is the package type
  */
-
 global $tmem_event;
 ?>
 <?php do_action( 'tmem_pre_event_detail', $tmem_event->ID, $tmem_event ); ?>
-<div id="post-<?php echo esc_attr( $tmem_event->ID ); ?>" class="tmem-<?php echo esc_attr( $tmem_event->post_status ); ?>">
+<div id="post-<?php echo $tmem_event->ID; ?>" class="tmem-s-event tmem-<?php echo $tmem_event->post_status; ?>">
+  
+  <?php do_action( 'tmem_print_notices' ); ?>
 
-	<?php do_action( 'tmem_print_notices' ); ?>
+  <p><?php printf( __( 'Details of your %s taking place on %s are shown below.', 'mobile-events-manager' ),
+  tmem_get_label_singular( true ), '{event_date}' ); ?></p>
 
-	<p>
-	<?php
-	printf(
-		esc_html( __( 'Details of your %1$s taking place on %2$s are shown below.', 'mobile-events-manager' ) ),
-		esc_html( tmem_get_label_singular( true ) ),
-		'{event_date}'
-	);
-	?>
-			</p>
+  <p><?php printf( __( 'Please confirm the details displayed are correct or <a href="%s">contact us</a> with any adjustments.', 'mobile-events-manager' ),
+  '{contact_page}' ); ?></p>
 
-	<p>
-	<?php
-	printf(
-		esc_html( __( 'Please confirm the details displayed are correct or <a href="%s">contact us</a> with any adjustments.', 'mobile-events-manager' ) ),
-		'{contact_page}'
-	);
-	?>
-			</p>
+  <?php
+  /**
+   * Display event action buttons
+   */
+  ?>
+  <div class="tmem-action-btn-container">{event_action_buttons}</div>
 
-	<?php
-	/**
-	 * Display event action buttons
-	 */
-	?>
-	<div class="tmem-action-btn-container">{event_action_buttons}</div>
+  <?php
+  /**
+   * Display event details
+   */
+  ?>
+  <?php do_action( 'tmem_pre_event_details', $tmem_event->ID, $tmem_event ); ?>
 
-	<?php
-	/**
-	 * Display event details
-	 */
-	?>
-	<?php do_action( 'tmem_pre_event_details', $tmem_event->ID, $tmem_event ); ?>
+  <div id="tmem-singleevent-details">
+    <div class="single-event-field full">
+      <div class="tmem-event-heading">{event_name} - {event_date}</div>
+    </div>
 
-	<div id="tmem-singleevent-details">
-		<table class="tmem-singleevent-overview">
-			<tr>
-				<th colspan="4" class="tmem-event-heading">{event_name} - {event_date}</th>
-			</tr>
 
-			<tr>
-				<th colspan="4"><?php esc_html_e( 'Status:', 'mobile-events-manager' ); ?> {event_status}</th>
-			</tr>
+    <div class="tmem-singleevent-overview">
 
-			<tr>
-				<th><?php printf( esc_html__( '%s Type:', 'mobile-events-manager' ), esc_html( tmem_get_label_singular() ) ); ?></th>
-				<td>{event_type}</td>
-				<th><?php printf( esc_html__( 'Your %s:', 'mobile-events-manager' ), esc_html__( tmem_get_option( 'artist', __( 'DJ', 'mobile-events-manager' ) ) ) ); ?></th>
-				<td>{employee_fullname}</td>
-			</tr>
+      <div class="single-event-field half">     
+        <strong> <?php _e( 'Status:', 'mobile-events-manager' ); ?></strong> {event_status}
+      </div>
 
-			<tr>
-				<th><?php esc_html_e( 'Starts:', 'mobile-events-manager' ); ?></th>
-				<td>{start_time}</td>
-				<th><?php esc_html_e( 'Completes:', 'mobile-events-manager' ); ?></th>
-				<td>{end_time} ({end_date})</td>
-			</tr>
-			<?php if ( tmem_get_option( 'enable_packages' ) ) : ?>
-				<tr>
-					<th colspan="4"><?php esc_html_e( 'Package Details:', 'mobile-events-manager' ); ?></th>
-				</tr>
+      <div class="single-event-field half">     
+        <strong><?php printf( __( 'Function: ', 'mobile-events-manager' ), tmem_get_label_singular() ); ?></strong> {event_type}
+      </div>
 
-				<tr>
-					<th><?php esc_html_e( 'Package:', 'mobile-events-manager' ); ?></th>
-					<td>{event_package}</td>
-					<th><?php esc_html_e( 'Add-ons:', 'mobile-events-manager' ); ?></th>
-					<td>{event_addons}</td>
-				</tr>
-			<?php endif; ?>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Function Starts: ', 'mobile-events-manager' ); ?></strong> {start_time}
+      </div>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Function Ends: ', 'mobile-events-manager' ); ?></strong> {end_time} ({end_date})
+      </div>
 
-			<tr>
-				<th colspan="4"><?php esc_html_e( 'Pricing', 'mobile-events-manager' ); ?></th>
-			</tr>
+      <div class="single-event-field full">     
+        <div class="tmem-heading">Pricing</div>
+      </div>
 
-			<tr>
-				<th colspan="4"><?php esc_html_e( 'Total Cost:', 'mobile-events-manager' ); ?> {total_cost}<br />
-					{deposit_label}: {deposit} ({deposit_status})<br />
-					{balance_label} <?php esc_html_e( 'Remaining', 'mobile-events-manager' ); ?>: {balance}
-				</th>
-			</tr>
 
-			<tr>
-				<th colspan="4"><?php esc_html_e( 'Your Details', 'mobile-events-manager' ); ?></th>
-			</tr>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Total Cost:', 'mobile-events-manager' ); ?></strong> {total_cost}<br />
+        <strong>{deposit_label}:</strong> {deposit} ({deposit_status})<br />
+        <strong>{balance_label} <?php _e( 'Remaining', 'mobile-events-manager' ); ?>:</strong> {balance}
+      </div>
 
-			<tr>
-				<th><?php esc_html_e( 'Name:', 'mobile-events-manager' ); ?></th>
-				<td>{client_fullname}</td>
-				<th><?php esc_html_e( 'Phone:', 'mobile-events-manager' ); ?></th>
-				<td>{client_primary_phone}</td>
-			</tr>
+      <div class="single-event-field full">     
+        <div class="tmem-heading"><?php _e( 'Your Details', 'mobile-events-manager' ); ?></div>
+      </div>
 
-			<tr>
-				<th><?php esc_html_e( 'Email:', 'mobile-events-manager' ); ?></th>
-				<td>{client_email}</td>
-				<th><?php esc_html_e( 'Address:', 'mobile-events-manager' ); ?></th>
-				<td>{client_full_address}</td>
-			</tr>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Your Name: ', 'mobile-events-manager' ); ?></strong> {client_fullname}
+      </div>
 
-			<tr>
-				<th colspan="4"><?php esc_html_e( 'Venue Details', 'mobile-events-manager' ); ?></th>
-			</tr>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Phone:', 'mobile-events-manager' ); ?></strong> {client_primary_phone}
+      </div>
 
-			 <tr>
-				<th><?php esc_html_e( 'Venue:', 'mobile-events-manager' ); ?></th>
-				<td>{venue}</td>
-				<th><?php esc_html_e( 'Address:', 'mobile-events-manager' ); ?></th>
-				<td>{venue_full_address}</td>
-			</tr>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Email: ', 'mobile-events-manager' ); ?></strong> {client_email}
+      </div>
 
-		</table>
-	</div>
-	<?php do_action( 'tmem_post_event_details', $tmem_event->ID, $tmem_event ); ?>
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Address: ', 'mobile-events-manager' ); ?></strong> {client_full_address}
+      </div>
 
-</div>
-<?php do_action( 'tmem_post_event_detail', $tmem_event->ID, $tmem_event ); ?>
+      <div class="single-event-field full">     
+        <div class="tmem-heading"><?php _e( 'Venue Details', 'mobile-events-manager' ); ?></div>
+      </div>
+
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Venue: ', 'mobile-events-manager' ); ?></strong> {venue}
+      </div>
+
+      <div class="single-event-field half">     
+        <strong><?php _e( 'Address: ', 'mobile-events-manager' ); ?></strong> {venue_full_address}
+      </div>
+
+      <div class="single-event-field full">     
+        <div class="tmem-heading"><?php _e( 'Function Notes', 'mobile-events-manager' ); ?></div>
+        {client_notes}
+      </div>
+
+    </div>
+
+  </div>
+  <?php do_action( 'tmem_post_event_details', $tmem_event->ID, $tmem_event ); ?>
