@@ -3,7 +3,7 @@
  * This template is used to generate the page for the shortcode [tmem-profile] and is used by clients editing their profile.
  *
  * @version 1.0
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.5
  *
  * Do not customise this file!

@@ -3,7 +3,7 @@
  * This template is used when the current logged in client has no events.
  *
  * @version 1.0
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.3
  * @content_tag {client_*}
  * @shortcodes Supported

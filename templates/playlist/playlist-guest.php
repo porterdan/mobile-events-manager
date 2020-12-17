@@ -3,7 +3,7 @@
  * This template is used to generate the page for the shortcode [tmem-playlist] and is used for guests.
  *
  * @version 1.1
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.5
  * @content_tag client
  * @content_tag event

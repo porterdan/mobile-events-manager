@@ -3,7 +3,7 @@
  * This template is used when no alternative is provided.
  *
  * @version 1.0
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.3.8
  * @content_tag {client_*}
  * @content_tag {event_*}

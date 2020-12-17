@@ -3,7 +3,7 @@
  * This template is used to display the availability form with shortcode [tmem-availability display="vertical"].
  *
  * @version 1.0
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.3
  * @content_tag No {client_*}
  * @content_tag No {event_*}

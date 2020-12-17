@@ -19,7 +19,7 @@ global $tmem_event;
 
 $intro_text = sprintf(
 	__(
-	/* translators: %1 company name %2 is DJ Name */
+		/* translators: %1 company name %2 is DJ Name */
 		'The %1$s playlist management system enables you to give %2$s (your %3$s) an idea of the types of songs you would like played during your %4$s on %5$s.',
 		'mobile-events-manager'
 	),
@@ -63,11 +63,12 @@ $view_playlist_class  = ' tmem-hidden';
 	<div id="tmem_playlist_form_wrap" class="tmem_clearfix">
 		<?php do_action( 'tmem_before_playlist_form' ); ?>
 
-		<p class="head-nav"><a href="{event_url}"><?php esc_html_e( 'Back to %s', 'mobile-events-manager' ) . esc_attr( esc_html( tmem_get_label_singular() ) ); ?></a></p>
+		<p class="head-nav"><a href="{event_url}"><?php esc_html_e( 'Go Back', 'mobile-events-manager' ); ?></a></p>
 
 		<p><?php echo esc_attr( $intro_text ); ?></p>
 		<p><?php echo esc_attr( $guest_text ); ?></p>
-		<p class="tmem_playlist_share"><?php echo esc_html( $share_text ); ?></p>
+		<p class="tmem_playlist_share"><?php echo $share_text; ?></p>
+		<p class="guesturl">Allow your guests to add to your playlist, with this unique URL: <br/> <?php echo tmem_content_tag_guest_playlist_url($tmem_event->ID);?></p>
 
 		<?php if ( $tmem_event->playlist_is_open() ) : ?>
 
@@ -118,7 +119,7 @@ $view_playlist_class  = ' tmem-hidden';
 								</label>
 								<span class="tmem-description"><?php echo esc_html( $category_description ); ?></span>
 
-								<?php echo esc_attr( tmem_playlist_category_dropdown() ); ?>
+								<?php echo tmem_playlist_category_dropdown(); ?>
 							</p>
 
 							<p class="tmem_notes_field">
@@ -145,97 +146,91 @@ $view_playlist_class  = ' tmem-hidden';
 
 				<?php do_action( 'tmem_after_guest_playlist_form' ); ?>
 
-			<?php else : ?>
-				<div class="tmem-alert tmem-alert-info"><?php echo esc_attr( $limit_reached ); ?></div>
-			<?php endif; ?>
+				<?php else : ?>
+					<div class="tmem-alert tmem-alert-info"><?php echo esc_attr( $limit_reached ); ?></div>
+				<?php endif; ?>
 
-		<?php else : ?>
-			<?php do_action( 'tmem_playlist_closed', esc_attr( $tmem_event->ID ) ); ?>
-			 <div class="tmem-alert tmem-alert-info"><?php echo esc_attr( $playlist_closed ); ?></div>
-		<?php endif; ?>
+				<?php else : ?>
+					<?php do_action( 'tmem_playlist_closed', esc_attr( $tmem_event->ID ) ); ?>
+					<div class="tmem-alert tmem-alert-info"><?php echo esc_attr( $playlist_closed ); ?></div>
+				<?php endif; ?>
 
-	</div><!--end #tmem_playlist_form_wrap-->
+			</div><!--end #tmem_playlist_form_wrap-->
 
-	<?php do_action( 'tmem_playlist_before_entries' ); ?>
+			<?php do_action( 'tmem_playlist_before_entries' ); ?>
 
-	<?php
-	$playlist_entries = tmem_get_playlist_by_category( $tmem_event->ID );
-	$entries_class    = $playlist_entries ? '' : ' class="tmem-hidden"';
-	$your_playlist    = __( 'Your Current Playlist', 'mobile-events-manager' );
-	?>
+			<?php
+			$playlist_entries = tmem_get_playlist_by_category( $tmem_event->ID );
+			$entries_class    = $playlist_entries ? '' : ' class="tmem-hidden"';
+			$your_playlist    = __( 'Your Current Playlist', 'mobile-events-manager' );
+			?>
 
-	<div id="playlist-entries"<?php echo esc_attr( $entries_class ); ?>>
+			<div id="playlist-entries"<?php echo esc_attr( $entries_class ); ?>>
 
-		<a id="client-playlist-entries"></a>
-		<h5><?php echo esc_attr( $your_playlist ); ?></h5>
+				<a id="client-playlist-entries"></a>
+				<h5><?php echo esc_attr( $your_playlist ); ?></h5>
 
-		<p>
-		<?php
-		printf(
-			esc_html( __( 'Your playlist currently consists of <span class="song-count">%1$d %2$s</span> and is approximately <span class="playlist-length">%3$s</span> long. Your %4$s is scheduled for %5$s.', 'mobile-events-manager' ) ),
-			esc_attr( $total_entries ),
-			esc_html__( _n( 'song', 'songs', esc_attr( $total_entries ), 'mobile-events-manager' ) ),
-			'{playlist_duration}',
-			esc_attr( esc_html( tmem_get_label_singular( true ) ) ),
-			'{event_duration}'
-		);
-		?>
-		</p>
+				<p>
+					<?php
+					printf('Your playlist currently consists of <span class="song-count">%2$d songs.</span>', 'mobile-events-manager',
+						esc_attr( $total_entries ));
+						?>
+					</p>
 
-		<div class="playlist-entry-row-headings">
-			<div class="playlist-entry-column">
-				<span class="playlist-entry-heading"><?php echo esc_attr( $artist_label ); ?></span>
-			</div>
-			<div class="playlist-entry-column">
-				<span class="playlist-entry-heading"><?php echo esc_attr( $song_label ); ?></span>
-			</div>
-			<div class="playlist-entry-column">
-				<span class="playlist-entry-heading"><?php echo esc_attr( $category_label ); ?></span>
-			</div>
-			<div class="playlist-entry-column">
-				<span class="playlist-entry-heading"><?php esc_html_e( 'Notes', 'mobile-events-manager' ); ?></span>
-			</div>
-			<div class="playlist-entry-column">
-				<span class="playlist-entry-heading"></span>
-			</div>
-		</div>
-
-		<?php foreach ( $playlist_entries as $category => $category_entries ) : ?>
-
-			<?php foreach ( $category_entries as $entry ) : ?>
-				<?php $entry_data = tmem_get_playlist_entry_data( $entry->ID ); ?>
-
-				<div class="playlist-entry-row tmem-playlist-entry-<?php echo esc_attr( $entry->ID ); ?>">
-					<div class="playlist-entry-column">
-						<span class="playlist-entry"><?php echo esc_attr( $entry_data['artist'] ); ?></span>
+					<div class="playlist-entry-row-headings">
+						<div class="playlist-entry-column">
+							<span class="playlist-entry-heading"><?php echo esc_attr( $artist_label ); ?></span>
+						</div>
+						<div class="playlist-entry-column">
+							<span class="playlist-entry-heading"><?php echo esc_attr( $song_label ); ?></span>
+						</div>
+						<div class="playlist-entry-column">
+							<span class="playlist-entry-heading"><?php echo esc_attr( $category_label ); ?></span>
+						</div>
+						<div class="playlist-entry-column">
+							<span class="playlist-entry-heading"><?php esc_html_e( 'Notes', 'mobile-events-manager' ); ?></span>
+						</div>
+						<div class="playlist-entry-column">
+							<span class="playlist-entry-heading"></span>
+						</div>
 					</div>
-					<div class="playlist-entry-column">
-						<span class="playlist-entry"><?php echo esc_attr( $entry_data['song'] ); ?></span>
-					</div>
-					<div class="playlist-entry-column">
-						<span class="playlist-entry"><?php echo esc_attr( $category ); ?></span>
-					</div>
-					<div class="playlist-entry-column">
-						<span class="playlist-entry">
-							<?php if ( 'Guest' === $category ) : ?>
-								<?php echo esc_attr( $entry_data['added_by'] ); ?>
-							<?php elseif ( ! empty( $entry_data['djnotes'] ) ) : ?>
-								<?php echo esc_attr( $entry_data['djnotes'] ); ?>
-							<?php else : ?>
-								<?php echo '&ndash;'; ?>
-							<?php endif; ?>
-						</span>
-					</div>
-					<div class="playlist-entry-column">
-						<span class="playlist-entry">
-							<a class="tmem-delete playlist-delete-entry" data-event="<?php echo esc_attr( $tmem_event->ID ); ?>" data-entry="<?php echo esc_attr( $entry->ID ); ?>"><?php echo esc_attr( $delete_entry ); ?></a>
-						</span>
-					</div>
-				</div>
-			<?php endforeach; ?>
 
-		<?php endforeach; ?>
+					<?php foreach ( $playlist_entries as $category => $category_entries ) : ?>
 
-	</div>
+						<?php foreach ( $category_entries as $entry ) : ?>
+							<?php $entry_data = tmem_get_playlist_entry_data( $entry->ID ); ?>
 
-</div><!-- end of #tmem_playlist_wrap -->
+							<div class="playlist-entry-row tmem-playlist-entry-<?php echo esc_attr( $entry->ID ); ?>">
+								<div class="playlist-entry-column">
+									<span class="playlist-entry"><?php echo esc_attr( $entry_data['artist'] ); ?></span>
+								</div>
+								<div class="playlist-entry-column">
+									<span class="playlist-entry"><?php echo esc_attr( $entry_data['song'] ); ?></span>
+								</div>
+								<div class="playlist-entry-column">
+									<span class="playlist-entry"><?php echo esc_attr( $category ); ?></span>
+								</div>
+								<div class="playlist-entry-column">
+									<span class="playlist-entry">
+										<?php if ( 'Guest' === $category ) : ?>
+											<?php echo esc_attr( $entry_data['added_by'] ); ?>
+											<?php elseif ( ! empty( $entry_data['djnotes'] ) ) : ?>
+												<?php echo esc_attr( $entry_data['djnotes'] ); ?>
+												<?php else : ?>
+													<?php echo '&ndash;'; ?>
+												<?php endif; ?>
+											</span>
+										</div>
+										<div class="playlist-entry-column">
+											<span class="playlist-entry">
+												<a class="tmem-delete playlist-delete-entry" data-event="<?php echo esc_attr( $tmem_event->ID ); ?>" data-entry="<?php echo esc_attr( $entry->ID ); ?>"><?php echo esc_attr( $delete_entry ); ?></a>
+											</span>
+										</div>
+									</div>
+								<?php endforeach; ?>
+
+							<?php endforeach; ?>
+
+						</div>
+
+					</div><!-- end of #tmem_playlist_wrap -->

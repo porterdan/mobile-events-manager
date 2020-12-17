@@ -3,7 +3,7 @@
  * This template is used to generate the page for the shortcode [tmem-login].
  *
  * @version 1.0
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.3
  * @content_tag
  * @shortcodes Not Supported

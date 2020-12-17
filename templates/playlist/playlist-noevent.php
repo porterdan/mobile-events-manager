@@ -3,7 +3,7 @@
  * This template is used when the current logged in client accesses the playlist page but has no events.
  *
  * @version 1.1
- * @author Mike Howard
+ * @author Jack Mawhinney, Dan Porter
  * @since 1.3
  * @content_tag {client_*}
  * @shortcodes Not Supported
