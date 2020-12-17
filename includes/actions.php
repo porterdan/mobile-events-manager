@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function tmem_get_actions() {
 	if ( isset( $_GET['tmem_action'] ) ) {
-		do_action( 'tmem_' . wp_verify_nonce( sanitize_key( $_GET['tmem_action'] ), $_GET ) );
+		do_action( 'tmem_' . sanitize_key( $_GET['tmem_action'] ), $_GET );
 	}
 } // tmem_get_actions
 add_action( 'init', 'tmem_get_actions' );
@@ -39,7 +39,7 @@ add_action( 'init', 'tmem_get_actions' );
  */
 function tmem_post_actions() {
 	if ( isset( $_POST['tmem_action'] ) ) {
-		do_action( 'tmem_' . wp_verify_nonce( sanitize_key( $_POST['tmem_action'] ), $_POST ) );
+		do_action( 'tmem_' . sanitize_key( $_POST['tmem_action'] ), $_POST );
 	}
 } // tmem_post_actions
 add_action( 'init', 'tmem_post_actions' );
