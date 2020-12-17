@@ -166,7 +166,7 @@ add_action( 'admin_notices', 'tmem_show_upgrade_notice' );
 function tmem_trigger_upgrades() {
 
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	update_option( 'tmem_version', TMEM_VERSION_NUM );
@@ -228,7 +228,7 @@ function tmem_v14_upgrades() {
 	global $wpdb;
 
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -508,7 +508,7 @@ function tmem_v143_upgrades() {
 	global $wpdb;
 
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -549,7 +549,7 @@ function tmem_v143_upgrades() {
  */
 function tmem_v147_upgrades() {
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -746,7 +746,7 @@ add_action( 'tmem-upgrade_event_tasks', 'tmem_v147_upgrade_event_tasks' );
  */
 function tmem_v15_upgrades() {
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -949,7 +949,7 @@ add_action( 'tmem-upgrade_event_pricing_15', 'tmem_v15_upgrade_event_pricing' );
  */
 function tmem_v154_upgrades() {
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -985,7 +985,7 @@ function tmem_v154_upgrades() {
  */
 function tmem_v156_upgrades() {
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
@@ -1164,7 +1164,7 @@ add_action( 'tmem-upgrade_availability_db_156', 'tmem_v156_upgrade_availability_
  */
 function tmem_v157_upgrades() {
 	if ( ! tmem_employee_can( 'manage_tmem' ) ) {
-		wp_die( __( 'You do not have permission to do perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to perform TMEM upgrades', 'mobile-events-manager' ), __( 'Error', 'mobile-events-manager' ), array( 'response' => 403 ) );
 	}
 
 	ignore_user_abort( true );
