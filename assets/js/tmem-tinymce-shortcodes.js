@@ -264,6 +264,11 @@
 									editor.insertContent( '{dj_notes}' );
 								}
 							}, {
+								text: 'Client Notes',
+								onclick: function () {
+									editor.insertContent( '{client_notes}' );
+								}
+							},{
 								text: 'Admin Notes',
 								onclick: function () {
 									editor.insertContent( '{admin_notes}' );
