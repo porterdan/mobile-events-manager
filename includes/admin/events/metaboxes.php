@@ -2865,7 +2865,7 @@ function tmem_event_metabox_history_journal_table( $event_id ) {
 			<?php if ( $journals ) : ?>
 				<tfoot>
 					<tr>
-						<td colspan="2"><span class="description">(<?php printf( esc_html__( 'Displaying the most recent %1$d entries of <a href="%2$s">%3$d total', 'mobile-events-manager' ), ( $count >= 3 ) ? 3 : $count, add_query_arg( array( 'p' => $event_id ), admin_url( 'edit-comments.php?p=5636' ) ), $count ); ?>)</span></td>
+						<td colspan="2"><span class="description"><?php printf( __('Displaying the most recent %1$d entries of <a href="%2$s">%3$d total', 'mobile-events-manager' ), ( $count >= 3 ) ? 3 : $count, add_query_arg( array( 'p' => $event_id ), admin_url( 'edit-comments.php?p=5636' ) ), $count ); ?></span></td>
 					</tr>
 				</tfoot>
 			<?php endif; ?>
