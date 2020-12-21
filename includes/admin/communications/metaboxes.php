@@ -131,11 +131,10 @@ function tmem_communication_details_metabox( $post ) {
 	?>
 	<p>
 	<?php
-	printf(
-		wp_kses_post( /* translators: %s: Date sent */
+	printf( /* translators: %s: Date sent */
 			__( '<strong>Date Sent</strong>: %s', 'mobile-events-manager' ),
 			gmdate( tmem_get_option( 'time_format', 'H:i' ) . ' ' . tmem_get_option( 'short_date_format', 'd/m/Y' ), get_post_meta( $post->ID, '_date_sent', true ) )
-		)
+		
 	);
 	?>
 		</p>
@@ -143,11 +142,11 @@ function tmem_communication_details_metabox( $post ) {
 	<p>
 	<?php
 	printf(
-		wp_kses_post( /* translators: %1: URl 2%: Artiste name */
+		 /* translators: %1: URl 2%: Artiste name */
 			__( '<strong>From</strong>: <a href="%1$s">%2$s</a>', 'mobile-events-manager' ),
 			admin_url( "/user-edit.php?user_id={$from->ID}" ),
 			$from->display_name
-		)
+	
 	);
 	?>
 		</p>
@@ -155,11 +154,11 @@ function tmem_communication_details_metabox( $post ) {
 	<p>
 	<?php
 	printf(
-		wp_kses_post( /* translators: %1: URl 2%: Customer Name */
+		/* translators: %1: URl 2%: Customer Name */
 			__( '<strong>Recipient</strong>: <a href="%1$s">%2$s</a>', 'mobile-events-manager' ),
 			admin_url( "/user-edit.php?user_id={$recipient->ID}" ),
 			$recipient->display_name
-		)
+		
 	);
 	?>
 		</p>
@@ -181,7 +180,7 @@ function tmem_communication_details_metabox( $post ) {
 				foreach ( $copies as $copy ) {
 					$user = get_user_by( 'email', $copy );
 					if ( $user ) {
-						echo wp_kses_post( "<em>{$user->display_name}</em>" );
+						echo "<em>{".esc_html( $user->display_name )."}</em>";
 
 						$i++;
 
@@ -208,7 +207,7 @@ function tmem_communication_details_metabox( $post ) {
 		?>
 		</p>
 
-	<p><strong><?php echo esc_html( tmem_get_label_singular() ); ?></strong>: <a href="<?php echo wp_kses_post( get_edit_post_link( get_post_meta( $post->ID, '_event', true ) ) ); ?>"><?php echo esc_attr( tmem_get_event_contract_id( stripslashes( get_post_meta( $post->ID, '_event', true ) ) ) ); ?></a></p>
+	<p><strong><?php echo esc_html( tmem_get_label_singular() ); ?></strong>: <a href="<?php echo get_edit_post_link( get_post_meta( $post->ID, '_event', true ) ); ?>"><?php echo esc_attr( tmem_get_event_contract_id( stripslashes( get_post_meta( $post->ID, '_event', true ) ) ) ); ?></a></p>
 
 	<?php
 	if ( ! empty( $attachments ) ) {
@@ -219,7 +218,7 @@ function tmem_communication_details_metabox( $post ) {
 
 			<?php
 			foreach ( $attachments as $attachment ) {
-				echo wp_kses_post( '<a style="font-size: 11px;" href="' . wp_get_attachment_url( $attachment->ID ) . '">' );
+				echo '<a style="font-size: 11px;" href="' . wp_get_attachment_url( $attachment->ID ) . '">';
 				echo esc_attr( basename( get_attached_file( $attachment->ID ) ) );
 				echo '</a>';
 				echo ( $i < count( $attachments ) ? '<br />' : '' );
