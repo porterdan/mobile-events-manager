@@ -165,14 +165,13 @@ class TMEM_Welcome {
 		?>
 <div id="tmem-header"> <img class="tmem-badge" src="<?php echo TMEM_PLUGIN_URL . '/assets/images/tmem_logo_300.png'; ?>" alt="<?php esc_html_e( 'TMEM Event Management', 'mobile-events-manager' ); ?>" / >
   <h1>
-		<?php esc_html_e( __( 'Welcome to TMEM Event Management %s', 'mobile-events-manager' ), esc_html( $display_version ) ); ?>
+		<?php echo 'Welcome to Mobile Events Manager ' .esc_html( $display_version ); ?>
   </h1>
   <p class="about-text">
 		<?php esc_html_e( 'Thank you for updating to the latest version!', 'mobile-events-manager' ); ?>
 	<br />
 		<?php
-		esc_html_e(
-			__( 'TMEM Event Management %1$s is ready to make your %2$s business even more efficient!', 'mobile-events-manager' ),
+		echo sprintf( __('TMEM Event Managementt %1$s is ready to make your %2$s business even more efficient!', 'mobile-events-manager'),
 			esc_html( $display_version ),
 			esc_html( tmem_get_label_plural( true ) )
 		);
@@ -471,15 +470,14 @@ class TMEM_Welcome {
 		</h4>
 		<p>
 			  <?php
-				printf(
-					esc_html__( 'Create clients directly from the %s screen by selected <strong>Add New Client</strong> from the <em>Select Client</em> dropdown to reveal a few additional fields', 'mobile-events-manager' ),
+				printf(__('Create clients directly from the %s screen by selected <strong>Add New Client</strong> from the <em>Select Client</em> dropdown to reveal a few additional fields', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular() )
 				);
 				?>
 		<h4>
 			  <?php
 				printf(
-					esc_html__( 'Add %s Types', 'mobile-events-manager' ),
+					__( 'Add %s Types', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular() )
 				);
 				?>
@@ -487,7 +485,7 @@ class TMEM_Welcome {
 		<p>
 			  <?php
 				printf(
-					esc_html__( 'If the %1$s type does not exist for the %1$s you are creating, click the <em>Add New</em> link next to the %2$s Type dropdown, enter the %2$s Type name in the text box that is revealed and click <em>Add</em>.<br />To manage all %2$s Types, go to <a href="%4$s">TMEM %3$s &rarr; %2$s Types</a>.', 'mobile-events-manager' ),
+					__( 'If the %1$s type does not exist for the %1$s you are creating, click the <em>Add New</em> link next to the %2$s Type dropdown, enter the %2$s Type name in the text box that is revealed and click <em>Add</em>.<br />To manage all %2$s Types, go to <a href="%4$s">TMEM %3$s &rarr; %2$s Types</a>.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					esc_html( tmem_get_label_singular() ),
 					esc_html( tmem_get_label_plural() ),
@@ -511,7 +509,7 @@ class TMEM_Welcome {
 		<p>
 			  <?php
 				printf(
-					esc_html__( 'Email templates can be configured to be sent automatically during an %1$s status change. Supporting our vast collection of <a href="%2$s" target="_blank">content tags</a> each email can be completley customised and tailored to the %1$s and client details.', 'mobile-events-manager' ),
+					__( 'Email templates can be configured to be sent automatically during an %1$s status change. Supporting our vast collection of <a href="%2$s" target="_blank">content tags</a> each email can be completley customised and tailored to the %1$s and client details.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					'https://www.mobileeventsmanager.co.uk/docs/content-tags/'
 				);
@@ -527,7 +525,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Event Type %2: Client zone name */
-					esc_html__( 'Create contract templates that be assigned to your %1. Clients will be able to review and <strong>Digitally Sign</strong> the contract via the %2$s.', 'mobile-events-manager' ),
+					__( 'Create contract templates that be assigned to your %1. Clients will be able to review and <strong>Digitally Sign</strong> the contract via the %2$s.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular() ),
 					esc_html( tmem_get_application_name() )
 				);
@@ -562,7 +560,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Event Type %2: travel %3 costs */
-					esc_html__( 'Packages are a pre-defined collection of add-ons that you can offer to your clients for their %1$s. Define a price for the package and upon selection, the %1$s %2$s and %3$s will be automatically and dynamically re-calculated. Add-ons included within the package, will no longer be available for selection within the add-ons list for this %2$s.', 'mobile-events-manager' ),
+					__( 'Packages are a pre-defined collection of add-ons that you can offer to your clients for their %1$s. Define a price for the package and upon selection, the %1$s %2$s and %3$s will be automatically and dynamically re-calculated. Add-ons included within the package, will no longer be available for selection within the add-ons list for this %2$s.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					tmem_get_balance_label(),
 					tmem_get_deposit_label()
@@ -576,7 +574,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Event Type %2: Travel %3: Times */
-					esc_html__( 'Add-ons are additional equipment items that can be selected for an %1$s. Each add-on is assigned an individual price and when selected the %1$s %2$s and %3$s are automatically and dynamically re-calculated.', 'mobile-events-manager' ),
+					__( 'Add-ons are additional equipment items that can be selected for an %1$s. Each add-on is assigned an individual price and when selected the %1$s %2$s and %3$s are automatically and dynamically re-calculated.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					tmem_get_balance_label(),
 					tmem_get_deposit_label()
@@ -587,7 +585,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Company Name %2: Artiste %3: URL %4: URL %5: URL */
-					esc_html__( 'Once you have enabled %1$s Packages &amp; Add-ons within the <a href="%3$s">TMEM %2$s Settings page</a>, manage them within <a href="%4$s">TMEM %2$s &rarr; Equipment Packages</a> and a href="%5$s">TMEM %2$s &rarr; Equipment Add-ons</a>.', 'mobile-events-manager' ),
+					__( 'Once you have enabled %1$s Packages &amp; Add-ons within the <a href="%3$s">TMEM %2$s Settings page</a>, manage them within <a href="%4$s">TMEM %2$s &rarr; Equipment Packages</a> and <a href="%5$s">TMEM %2$s &rarr; Equipment Add-ons</a>.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					esc_html( tmem_get_label_plural() ),
 					admin_url( 'admin.php?page=tmem-settings&tab=events' ),
@@ -612,7 +610,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Event %2: Company Name */
-					esc_html__( 'Known as the <em>Client Zone</em> by default, a password protected portal is available to your clients where they can review their %1$s, view and accept your quote, digitally sign their contract, and manage their %1$s playlist. All %2$s pages use a template system and are fully customisable.', 'mobile-events-manager' ),
+					__( 'Known as the <em>Client Zone</em> by default, a password protected portal is available to your clients where they can review their %1$s, view and accept your quote, digitally sign their contract, and manage their %1$s playlist. All %2$s pages use a template system and are fully customisable.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) ),
 					esc_html( tmem_get_application_name() )
 				);
@@ -627,7 +625,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %1: Client Zone name %2: Event Type */
-					esc_html__( 'Via the %1$s, clients are able to review and digitally sign their %2$s contract. Signing requires confirmation of their name and password for verification to maintain security.', 'mobile-events-manager' ),
+					__( 'Via the %1$s, clients are able to review and digitally sign their %2$s contract. Signing requires confirmation of their name and password for verification to maintain security.', 'mobile-events-manager' ),
 					esc_html( tmem_get_application_name() ),
 					esc_html( tmem_get_label_singular() )
 				);
@@ -644,7 +642,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %s: Event Type */
-					esc_html__( 'Log all payments your business receives and all expenses you have with the TMEM Event Management Transactions system. Instantly know how profitable your %s are as well as how much money your company has made over differing periods of time.', 'mobile-events-manager' ),
+					__( 'Log all payments your business receives and all expenses you have with the TMEM Event Management Transactions system. Instantly know how profitable your %s are as well as how much money your company has made over differing periods of time.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_plural() )
 				);
 			?>
@@ -658,7 +656,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %s: Event */
-					esc_html__( 'TMEM Event Management supports as many employees as you need at no additional cost. Easily create new employees, set permissions for them to ensure they only have access to what they need, and then assign as many employees to an %s as you need.', 'mobile-events-manager' ),
+					__( 'TMEM Event Management supports as many employees as you need at no additional cost. Easily create new employees, set permissions for them to ensure they only have access to what they need, and then assign as many employees to an %s as you need.', 'mobile-events-manager' ),
 					esc_html( tmem_get_label_singular( true ) )
 				);
 			?>
@@ -684,7 +682,7 @@ class TMEM_Welcome {
 			<?php esc_html_e( 'Join our Facebook User Group', 'mobile-events-manager' ); ?>
 		</h4>
 		<p>
-			<?php esc_html_e( 'Our <a href="https://www.facebook.com/groups/mobile-events-manager/" target="_blank">TMEM Facebook User Group</a> is a great way to exchange knowledge with other users and gain tips for use.', 'mobile-events-manager' ); ?>
+			<?php sprintf(__( 'Our <a href="https://www.facebook.com/groups/mobile-events-manager/" target="_blank">TMEM Facebook User Group</a> is a great way to exchange knowledge with other users and gain tips for use.', 'mobile-events-manager' )); ?>
 		</p>
 	</div>
 	</div>
@@ -699,7 +697,7 @@ class TMEM_Welcome {
 			<?php esc_html_e( 'Get Notified of Add-on Releases', 'mobile-events-manager' ); ?>
 		</h4>
 		<p>
-			<?php esc_html_e( 'New add-ons make TMEM Event Management even more powerful. Subscribe to the newsletter to stay up to date with our latest releases. <a href="http://eepurl.com/bTRkZj" target="_blank">Sign up now</a> to ensure you do not miss a release!', 'mobile-events-manager' ); ?>
+			<?php sprintf(__(  'New add-ons make TMEM Event Management even more powerful. Subscribe to the newsletter to stay up to date with our latest releases. <a href="http://eepurl.com/bTRkZj" target="_blank">Sign up now</a> to ensure you do not miss a release!', 'mobile-events-manager' ) ); ?>
 		</p>
 	</div>
 	<div class="col">
@@ -707,7 +705,7 @@ class TMEM_Welcome {
 			<?php esc_html_e( 'Get Alerted About New Tutorials', 'mobile-events-manager' ); ?>
 		</h4>
 		<p>
-			<?php esc_html_e( '<a href="http://eepurl.com/bTRkZj" target="_blank">Sign up now</a> to hear about the latest tutorial releases that explain how to take TMEM Event Management further.', 'mobile-events-manager' ); ?>
+			<?php sprintf(__(  '<a href="http://eepurl.com/bTRkZj" target="_blank">Sign up now</a> to hear about the latest tutorial releases that explain how to take TMEM Event Management further.', 'mobile-events-manager' )); ?>
 		</p>
 	</div>
 	</div>
@@ -733,7 +731,7 @@ class TMEM_Welcome {
 			<?php
 				printf(
 					/* translators: %s: site name */
-					esc_html__( '<a href="%s" target="_blank">The Add-ons store</a> has a list of all available extensions, including convenient category filters so you can find exactly what you are looking for.', 'mobile-events-manager' ),
+					__( '<a href="%s" target="_blank">The Add-ons store</a> has a list of all available extensions, including convenient category filters so you can find exactly what you are looking for.', 'mobile-events-manager' ),
 					'https://www.mobileeventsmanager.co.uk/add-ons'
 				);
 			?>
