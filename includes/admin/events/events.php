@@ -750,8 +750,8 @@ function tmem_output_event_name_field( $post ) {
 		return;
 	}
 
-	$value       = wp_kses_post( tmem_get_event_name( $post->ID ) );
-	$placeholder = sprintf( 'Optional: Display name in %s', 'mobile-events-manager', tmem_get_option( 'app_name', __( 'Client Zone', 'mobile-events-manager' ) ) );
+	$value       = tmem_get_event_name( $post->ID );
+	$placeholder = sprintf( 'Display name in %s', 'mobile-events-manager', tmem_get_option( 'app_name', __( 'Client Zone', 'mobile-events-manager' ) ) );
 
 	?>
 	<div id="titlediv">
